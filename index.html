@@ -51,13 +51,14 @@ h2{font-size:1.15rem;margin:44px 0 14px;letter-spacing:-.01em}
 .links a{color:var(--acc);text-decoration:none;margin-right:16px;font-size:.94rem}
 .links a:hover{text-decoration:underline}
 .lede{margin:22px 0 8px}
-.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;background:var(--card)}
-.card h3{margin:0 0 6px;font-size:1.02rem}
+.card{border:0;border-left:2px solid var(--line);border-radius:0;padding:2px 0 2px 16px;margin:20px 0;background:none}
+.card h3{margin:0 0 5px;font-size:1.0rem;font-weight:600}
 .card h3 a{color:var(--fg);text-decoration:none}
 .card h3 a:hover{color:var(--acc)}
 .card p{margin:0;color:var(--mut);font-size:.94rem}
 .num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--fg)}
-.meta{margin-top:8px;font-size:.82rem;color:var(--mut)}
+.meta{margin-top:6px;font-size:.82rem;color:var(--mut)}
+.tools img{max-width:100%;height:auto;margin:6px 0 18px}
 footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
 </style>
 </head>
@@ -78,6 +79,11 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
 check my own numbers before anyone else does. Every figure below came from a run in the
 repository it links to, and each one has a script in CI that fails the build if the prose
 and the data stop agreeing.</p>
+
+<p class="lede"><strong>Eight repos, 98 source files, 454 tests, all open.</strong></p>
+
+<p class="tools"><img alt="Python, C++, PyTorch, scikit-learn, FastAPI, Docker, GitHub Actions, PostgreSQL, Linux, Git"
+  src="https://skillicons.dev/icons?i=py,cpp,pytorch,sklearn,fastapi,docker,githubactions,postgres,linux,git&amp;theme=light&amp;perline=10"></p>
 
 <h2>Systems built from the papers up</h2>
 
