@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aghasalim Mustafazada | AI engineering, measured</title>
+<meta name="description" content="Third year AI student at Howest, Belgium. From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow, multi-head latent attention and Schrodinger bridges, each with measured results and reproducible benchmarks.">
+<meta name="author" content="Aghasalim Mustafazada">
+<link rel="canonical" href="https://aghasalim.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://aghasalim.github.io/">
+<meta property="og:title" content="Aghasalim Mustafazada | AI engineering, measured">
+<meta property="og:description" content="From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow and more. Every number measured, reproducible, and checked by CI.">
+<meta property="og:image" content="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/nfe-quality.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aghasalim Mustafazada | AI engineering, measured">
+<meta name="twitter:description" content="From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow and more. Every number measured and reproducible.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/nfe-quality.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aghasalim Mustafazada",
+  "url": "https://aghasalim.github.io/",
+  "jobTitle": "AI student and engineer",
+  "description": "Third year Applied AI student at Howest, Belgium. Works on anomaly detection, model interpretability and from-scratch implementations of modern AI systems.",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Howest University of Applied Sciences" },
+  "address": { "@type": "PostalAddress", "addressCountry": "BE" },
+  "identifier": "https://orcid.org/0009-0001-8746-4582",
+  "sameAs": [
+    "https://github.com/aghasalim",
+    "https://www.kaggle.com/aghasalimmustafazada",
+    "https://linkedin.com/in/mustafazada",
+    "https://orcid.org/0009-0001-8746-4582"
+  ],
+  "knowsAbout": ["Machine learning","Deep learning","GPU kernels","Diffusion models","Reinforcement learning from human feedback","Optimal transport","Model interpretability","Anomaly detection"]
+}
+</script>
+
+<style>
+:root{--fg:#1a1a1a;--mut:#5b6270;--line:#e3e6ea;--acc:#0b5fff;--bg:#fff;--card:#fafbfc}
+@media(prefers-color-scheme:dark){:root{--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:56px 22px 80px}
+h1{font-size:2.05rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+h2{font-size:1.15rem;margin:44px 0 14px;letter-spacing:-.01em}
+.tag{color:var(--mut);margin:0 0 18px}
+.links a{color:var(--acc);text-decoration:none;margin-right:16px;font-size:.94rem}
+.links a:hover{text-decoration:underline}
+.lede{margin:22px 0 8px}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;background:var(--card)}
+.card h3{margin:0 0 6px;font-size:1.02rem}
+.card h3 a{color:var(--fg);text-decoration:none}
+.card h3 a:hover{color:var(--acc)}
+.card p{margin:0;color:var(--mut);font-size:.94rem}
+.num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--fg)}
+.meta{margin-top:8px;font-size:.82rem;color:var(--mut)}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Aghasalim Mustafazada</h1>
+  <p class="tag">Third year AI student at Howest, Belgium. Anomaly detection and interpretability.</p>
+  <p class="links">
+    <a href="https://github.com/aghasalim">GitHub</a>
+    <a href="https://www.kaggle.com/aghasalimmustafazada">Kaggle</a>
+    <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>
+    <a href="https://orcid.org/0009-0001-8746-4582">ORCID</a>
+  </p>
+</header>
+
+<p class="lede">I get suspicious of results that only work on the benchmark, so I try to
+check my own numbers before anyone else does. Every figure below came from a run in the
+repository it links to, and each one has a script in CI that fails the build if the prose
+and the data stop agreeing.</p>
+
+<h2>Systems built from the papers up</h2>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/latent-diffusion-from-scratch">latent-diffusion-from-scratch</a></h3>
+  <p>Autoencoder, DDPM and DDIM. Diffusion in a 4x compressed latent trains
+  <span class="num">5.3x</span> faster than the pixel baseline and scores
+  <span class="num">6.2x</span> better at matched steps.</p>
+  <p class="meta">The surprise: a latent at 1.0x compression still wins, so the benefit is not only fewer elements to denoise.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/rlhf-ppo-from-scratch">rlhf-ppo-from-scratch</a></h3>
+  <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward
+  climbs to <span class="num">+9.97</span> while the true objective peaks and then collapses
+  to <span class="num">-1.43</span>, below the policy it started from.</p>
+  <p class="meta">Goodhart's law with a plot, and nothing observable during training warns you.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/rectified-flow-from-scratch">rectified-flow-from-scratch</a></h3>
+  <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric
+  by <span class="num">15000x</span> and buys single-step sampling at
+  <span class="num">128x</span> less compute for no measurable loss.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/flash-attention-from-scratch">flash-attention-from-scratch</a></h3>
+  <p>IO-aware attention, measured rather than assumed. Kernel fusion is worth about
+  <span class="num">3x</span> and lifts achieved throughput from 22% of peak to roughly 67%.</p>
+  <p class="meta">Includes a claim I had to withdraw: the roofline does not settle the memory-bound question once you check the error bar.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/schrodinger-bridge-from-scratch">schrodinger-bridge-from-scratch</a></h3>
+  <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching.
+  Bridge matching wins by <span class="num">2x to 12x</span> at a quarter the cost.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/mla-from-scratch">mla-from-scratch</a></h3>
+  <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference
+  verified equal to the naive form to <span class="num">6e-07</span>. A
+  <span class="num">14.2x</span> KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
+  <p>An RSSM and an actor critic trained entirely in imagination, on a partially observable
+  task where velocity is hidden. The world model works and the agent that learns inside it
+  does not, which the write-up says plainly.</p>
+</div>
+
+<h2>Tools and applied work</h2>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/groundcheck-mcp">groundcheck-mcp</a></h3>
+  <p>An MCP connector that checks whether a claim is actually grounded, a real quote, a real
+  citation, real code output, with no second language model doing the judging. Works with
+  Claude and Gemini.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/eu-ai-act-rag">eu-ai-act-rag</a></h3>
+  <p>Retrieval over Regulation (EU) 2024/1689, graded by a model that is not the one
+  answering. <span class="num">90.2%</span> faithful.</p>
+</div>
+
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
+  <p>IEEE-CIS fraud detection done the honest way rather than the version that leaks future
+  data. <span class="num">0.1044 AUC</span> is what that difference costs, and
+  <span class="num">0.9086</span> on the private leaderboard, scored against labels I never saw.</p>
+</div>
+
+<footer>
+  <p>All source on <a href="https://github.com/aghasalim" style="color:var(--acc)">GitHub</a>.
+  Open to AI and backend internships.</p>
+</footer>
+</div>
+</body>
+</html>
