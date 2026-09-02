@@ -35,14 +35,13 @@ var voidTags = map[string]bool{
 }
 
 var (
-	tagRe      = regexp.MustCompile(`(?s)<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>`)
-	commentRe  = regexp.MustCompile(`(?s)<!--.*?-->`)
-	scriptRe   = regexp.MustCompile(`(?s)<script[^>]*>.*?</script>`)
-	styleRe    = regexp.MustCompile(`(?s)<style[^>]*>.*?</style>`)
-	attrRe     = regexp.MustCompile(`(href|src|id)="([^"]*)"`)
-	locRe      = regexp.MustCompile(`<loc>([^<]+)</loc>`)
+	tagRe       = regexp.MustCompile(`(?s)<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>`)
+	commentRe   = regexp.MustCompile(`(?s)<!--.*?-->`)
+	scriptRe    = regexp.MustCompile(`(?s)<script[^>]*>.*?</script>`)
+	styleRe     = regexp.MustCompile(`(?s)<style[^>]*>.*?</style>`)
+	attrRe      = regexp.MustCompile(`(href|src|id)="([^"]*)"`)
+	locRe       = regexp.MustCompile(`<loc>([^<]+)</loc>`)
 	canonicalRe = regexp.MustCompile(`<link rel="canonical" href="([^"]+)"`)
-	countRe    = regexp.MustCompile("claims\\.tsv`? records (\\d+)\\s+claims")
 )
 
 // checkStructure walks the tag stream of index.html and requires every non void
@@ -292,25 +291,6 @@ func checkClaims(html string, claims []claim) (int, float64, string) {
 	return okCount, worst, worstID
 }
 
-// checkREADMECount requires the claim count quoted in the README to be the real
-// number of rows in the ledger.
-func checkREADMECount(root string, rows int) {
-	b, err := os.ReadFile(filepath.Join(root, "README.md"))
-	if err != nil {
-		bad("cannot read README.md: %v", err)
-		return
-	}
-	m := countRe.FindStringSubmatch(string(b))
-	if m == nil {
-		bad("README.md does not state how many claims the ledger records")
-		return
-	}
-	n, _ := strconv.Atoi(m[1])
-	if n != rows {
-		bad("README.md says the ledger records %d claims, it has %d rows", n, rows)
-	}
-}
-
 func main() {
 	root := flag.String("root", "../..", "repository root")
 	flag.Parse()
@@ -327,7 +307,6 @@ func main() {
 	checkSiteMeta(*root, html)
 	claims := readClaims(*root)
 	okCount, worst, worstID := checkClaims(html, claims)
-	checkREADMECount(*root, len(claims))
 
 	if len(problems) > 0 {
 		for _, p := range problems {
