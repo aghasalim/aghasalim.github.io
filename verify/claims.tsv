@@ -1,0 +1,20 @@
+id	repo	source	rule	a	b	published	phrase
+ld_speed	latent-diffusion-from-scratch	README.md line 13	copy	5.3	-	5.3	trains 5.3x faster than the pixel baseline
+ld_quality	latent-diffusion-from-scratch	README.md line 13	copy	6.2	-	6.2	scores 6.2x better at matched steps
+rlhf_proxy	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	9.966	-	9.97	climbs to +9.97
+rlhf_gold	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	-1.426	-	-1.43	collapses to -1.43
+rf_straight	rectified-flow-from-scratch	README.md line 70	copy	15000	-	15000	drops the straightness metric by 15000x
+rf_compute	rectified-flow-from-scratch	README.md line 43	copy	128	-	128	128x less compute
+fa_fusion	flash-attention-from-scratch	README.md line 60	ratio0	67	22	3	Kernel fusion is worth about 3x
+fa_before	flash-attention-from-scratch	README.md line 60	copy	22	-	22	from 22% of peak
+fa_after	flash-attention-from-scratch	README.md line 60	copy	67	-	67	to roughly 67%
+sb_low	schrodinger-bridge-from-scratch	README.md line 70, ODE column minimum	round1	1.29	-	1.3	wins by 1.3x to 12x
+sb_high	schrodinger-bridge-from-scratch	README.md line 70, SDE column maximum	round0	12.08	-	12	wins by 1.3x to 12x
+sb_cost	schrodinger-bridge-from-scratch	README.md wall clock table, DSB 33 s over bridge matching 8.0 s	ratio0	33	8.0	4	at a quarter the cost
+mla_ratio	mla-from-scratch	README.md KV cache table, MHA 120.00 GB over MLA 8.44 GB	ratio1	120.00	8.44	14.2	A 14.2x KV cache reduction
+mla_mha	mla-from-scratch	README.md KV cache table, MHA row	copy	120.00	-	120	120 GB down to 8.4 GB
+mla_mla	mla-from-scratch	README.md KV cache table, MLA row 8.44 GB	round1	8.44	-	8.4	120 GB down to 8.4 GB
+mla_absorb	mla-from-scratch	README.md line 154	copy	6e-07	-	6e-07	verified equal to the naive form to 6e-07
+eu_faith	eu-ai-act-rag	README.md line 78	copy	90.2	-	90.2	90.2% faithful
+ieee_gap	ieee-fraud-ml	README.md split table, shuffled global 0.9557 minus chronological fold-local embargo 0.8513	diff4	0.9557	0.8513	0.1044	0.1044 AUC is what that difference costs
+ieee_lb	ieee-fraud-ml	README.md leaderboard table, private leaderboard row	copy	0.9086	-	0.9086	0.9086 on the private leaderboard

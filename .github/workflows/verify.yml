@@ -1,0 +1,42 @@
+name: verify claims
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: install R
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq r-base > /dev/null
+
+      - name: recompute
+        run: bash verify/verify.sh
+
+      - name: the checks must reject a corrupted ledger
+        run: |
+          cp verify/claims.tsv /tmp/claims.tsv.bak
+          python3 -c "
+          lines = open('verify/claims.tsv').readlines()
+          f = lines[1].split('\t')
+          f[6] = '999.9'
+          lines[1] = '\t'.join(f)
+          open('verify/claims.tsv', 'w').writelines(lines)
+          "
+          if bash verify/verify.sh 2>/dev/null; then
+            echo "the corrupted ledger was accepted"
+            cp /tmp/claims.tsv.bak verify/claims.tsv
+            exit 1
+          fi
+          echo "rejected as it should be"
+          cp /tmp/claims.tsv.bak verify/claims.tsv
+          bash verify/verify.sh
