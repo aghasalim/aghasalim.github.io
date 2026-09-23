@@ -4,10 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aghasalim Mustafazada | AI engineering, measured</title>
-<meta name="description" content="Third year AI student at Howest, Belgium. From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow, multi-head latent attention and Schrodinger bridges, each with measured results and reproducible benchmarks.">
+<meta name="description" content="Third year Applied AI student at Howest, Belgium. From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow, multi-head latent attention and Schrodinger bridges, plus evaluation work on hallucination, anomaly detection and fine-tuning, each with measured, reproducible results.">
 <meta name="author" content="Aghasalim Mustafazada">
 <link rel="canonical" href="https://aghasalim.github.io/">
-
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://aghasalim.github.io/">
 <meta property="og:title" content="Aghasalim Mustafazada | AI engineering, measured">
@@ -17,7 +16,6 @@
 <meta name="twitter:title" content="Aghasalim Mustafazada | AI engineering, measured">
 <meta name="twitter:description" content="From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow and more. Every number measured and reproducible.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/nfe-quality.png">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,182 +23,287 @@
   "name": "Aghasalim Mustafazada",
   "url": "https://aghasalim.github.io/",
   "jobTitle": "AI student and engineer",
-  "description": "Third year Applied AI student at Howest, Belgium. Works on anomaly detection, model interpretability and from-scratch implementations of modern AI systems.",
-  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Howest University of Applied Sciences" },
-  "address": { "@type": "PostalAddress", "addressCountry": "BE" },
+  "description": "Third year Creative Technologies and Artificial Intelligence student at Howest, Belgium. Works on anomaly detection, model evaluation and from-scratch implementations of modern AI systems.",
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Howest University of Applied Sciences" },
+    { "@type": "EducationalOrganization", "name": "STEP IT Academy Azerbaijan" }
+  ],
+  "worksFor": { "@type": "Organization", "name": "Adscreen" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Kortrijk", "addressCountry": "BE" },
   "identifier": "https://orcid.org/0009-0001-8746-4582",
   "sameAs": [
     "https://github.com/aghasalim",
     "https://www.kaggle.com/aghasalimmustafazada",
     "https://linkedin.com/in/mustafazada",
+    "https://huggingface.co/aghasalim",
+    "https://ollama.com/aghasalim",
+    "https://pypi.org/project/groundedness/",
     "https://orcid.org/0009-0001-8746-4582"
   ],
-  "knowsAbout": ["Machine learning","Deep learning","GPU kernels","Diffusion models","Reinforcement learning from human feedback","Optimal transport","Model interpretability","Anomaly detection"]
+  "knowsAbout": ["Machine learning","Deep learning","GPU kernels","Diffusion models","Reinforcement learning from human feedback","Optimal transport","Model evaluation","Anomaly detection","Retrieval augmented generation","Hallucination detection"]
 }
 </script>
-
 <style>
-:root{--fg:#1a1a1a;--mut:#5b6270;--line:#e3e6ea;--acc:#0b5fff;--bg:#fff;--card:#fafbfc}
-@media(prefers-color-scheme:dark){:root{--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25}}
+:root{--fg:#1a1a1a;--mut:#5b6270;--line:#e3e6ea;--acc:#0b5fff;--bg:#fff;--card:#fafbfc;--chip:#eef2f7}
+:root[data-theme=dark]{--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25;--chip:#232833}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25;--chip:#232833}}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:860px;margin:0 auto;padding:56px 22px 80px}
-h1{font-size:2.05rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
-h2{font-size:1.15rem;margin:44px 0 14px;letter-spacing:-.01em}
-.tag{color:var(--mut);margin:0 0 18px}
-.links a{color:var(--acc);text-decoration:none;margin-right:16px;font-size:.94rem}
+a{color:var(--acc)}
+.wrap{max-width:900px;margin:0 auto;padding:40px 22px 80px}
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .in{max-width:900px;margin:0 auto;padding:10px 22px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:.9rem}
+nav a{color:var(--mut);text-decoration:none}
+nav a:hover{color:var(--acc)}
+nav .sp{margin-left:auto}
+h1{font-size:2.2rem;line-height:1.15;margin:0 0 6px;letter-spacing:-.02em}
+h2{font-size:1.2rem;margin:52px 0 16px;letter-spacing:-.01em;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{margin:0 0 5px;font-size:1rem;font-weight:600}
+.tag{color:var(--mut);margin:0 0 14px;font-size:1.05rem}
+.links a{text-decoration:none;margin-right:16px;font-size:.94rem}
 .links a:hover{text-decoration:underline}
 .lede{margin:22px 0 8px}
-.card{border:0;border-left:2px solid var(--line);border-radius:0;padding:2px 0 2px 16px;margin:20px 0;background:none}
-.card h3{margin:0 0 5px;font-size:1.0rem;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 0}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.fact b{display:block;font-size:1.25rem;letter-spacing:-.01em}
+.fact span{color:var(--mut);font-size:.84rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:640px){.two{grid-template-columns:1fr}nav .sp{padding:4px 10px}.fact b{font-size:1.1rem}}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{padding:0 0 16px 16px;border-left:2px solid var(--line);position:relative}
+.tl li:before{content:"";position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.tl .when{color:var(--mut);font-size:.84rem}
+.tl p{margin:2px 0 0;color:var(--mut);font-size:.92rem}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;align-items:center}
+.filters input{flex:1;min-width:180px;font:inherit;font-size:.9rem;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg)}
+.chip{font:inherit;font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--mut);cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.card{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:18px 0}
 .card h3 a{color:var(--fg);text-decoration:none}
 .card h3 a:hover{color:var(--acc)}
 .card p{margin:0;color:var(--mut);font-size:.94rem}
+.card .meta{margin-top:5px;font-size:.8rem;color:var(--mut);display:flex;gap:12px;flex-wrap:wrap}
+.card .meta .k{background:var(--chip);border-radius:4px;padding:0 6px}
+.card[hidden]{display:none}
+.empty{color:var(--mut);font-size:.92rem}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skills span{background:var(--chip);border-radius:6px;padding:4px 10px;font-size:.88rem}
 footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
-
-/* CV button */
 .cvbar{margin:18px 0 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.9rem;
-  padding:7px 14px;border:1px solid var(--line);border-radius:7px;background:var(--card);
-  color:var(--fg);cursor:pointer;text-decoration:none;transition:border-color .15s,color .15s}
+.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.9rem;padding:7px 14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;transition:border-color .15s,color .15s}
 .btn:hover{border-color:var(--acc);color:var(--acc)}
 .btn svg{width:14px;height:14px;flex:none}
-
-/* CV modal */
 .modal[hidden]{display:none}
-.modal{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
-  background:rgba(8,10,14,.72);padding:20px}
-.modal-head{display:flex;align-items:center;gap:12px;max-width:1000px;width:100%;
-  margin:0 auto 12px;color:#fff}
+.modal{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:rgba(8,10,14,.72);padding:20px}
+.modal-head{display:flex;align-items:center;gap:12px;max-width:1000px;width:100%;margin:0 auto 12px;color:#fff}
 .modal-head strong{font-size:.96rem;font-weight:600;margin-right:auto}
 .modal-head .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
 .modal-head .btn:hover{border-color:#fff;color:#fff}
-.modal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;background:var(--card);
-  border-radius:8px;overflow:hidden;min-height:0}
+.modal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;background:var(--card);border-radius:8px;overflow:hidden;min-height:0}
 .modal-body object,.modal-body iframe{width:100%;height:100%;border:0;display:block}
 .modal-fallback{padding:28px;color:var(--mut);font-size:.94rem;text-align:center}
 @media(max-width:640px){.modal{padding:12px}.modal-head strong{display:none}}
 </style>
 </head>
 <body>
+<nav><div class="in">
+  <a href="#about">About</a><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+  <button class="btn sp" type="button" id="theme" aria-label="Toggle dark mode">Theme</button>
+</div></nav>
 <div class="wrap">
-<header>
+<header id="about">
   <h1>Aghasalim Mustafazada</h1>
-  <p class="tag">Third year AI student at Howest, Belgium. Anomaly detection and interpretability.</p>
+  <p class="tag">Third year Creative Technologies and AI student at Howest, Kortrijk. Originally from Baku.</p>
   <p class="links">
     <a href="https://github.com/aghasalim">GitHub</a>
     <a href="https://www.kaggle.com/aghasalimmustafazada">Kaggle</a>
     <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>
+    <a href="https://huggingface.co/aghasalim">Hugging Face</a>
+    <a href="https://ollama.com/aghasalim">Ollama</a>
+    <a href="https://pypi.org/project/groundedness/">PyPI</a>
     <a href="https://orcid.org/0009-0001-8746-4582">ORCID</a>
   </p>
   <p class="cvbar">
     <button class="btn" type="button" id="cv-open" aria-haspopup="dialog">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M2.5 2.5h7l4 4v7a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/>
-        <path d="M9.5 2.5v4h4"/>
-      </svg>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 2.5h7l4 4v7a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/><path d="M9.5 2.5v4h4"/></svg>
       View CV
     </button>
-    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf"
-       download="Aghasalim-Mustafazada-CV.pdf">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M8 2v8"/><path d="M4.5 7l3.5 3.5L11.5 7"/><path d="M2.5 13.5h11"/>
-      </svg>
+    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf" download="Aghasalim-Mustafazada-CV.pdf">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8"/><path d="M4.5 7l3.5 3.5L11.5 7"/><path d="M2.5 13.5h11"/></svg>
       Download PDF
     </a>
+    <button class="btn" type="button" id="copy-mail">Copy email</button>
   </p>
 </header>
 
-<p class="lede">I get suspicious of results that only work on the benchmark, so I check
-my own numbers before anyone else does. Every figure below came from a run in the
-repository it links to.</p>
+<p class="lede">I get suspicious of results that only work on the benchmark, so I check my own
+numbers before anyone else does. Most of what is below is either a known system rebuilt
+from the paper and measured on my own laptop, or an evaluation where the interesting
+part turned out to be that the obvious story was wrong. Every figure came from a run in
+the repository it links to, and most of those repositories fail their own CI if the
+README drifts from the CSV.</p>
 
+<div class="facts">
+  <div class="fact"><b>0.9086</b><span>IEEE-CIS private leaderboard AUC, labels I never saw</span></div>
+  <div class="fact"><b>Gold</b><span>International STEM Olympiad, mathematics, 2022</span></div>
+  <div class="fact"><b>95%</b><span>planted errors caught by my multilingual groundedness detector, 31 languages</span></div>
+  <div class="fact"><b>200+</b><span>students taught programming and AI at STEP IT Academy</span></div>
+</div>
 
-<h2>Systems built from the papers up</h2>
+<h2 id="work">Projects</h2>
+<div class="filters">
+  <input type="search" id="q" placeholder="Filter projects, e.g. diffusion, RL, hallucination" aria-label="Filter projects">
+  <button class="chip on" data-f="all">All</button>
+  <button class="chip" data-f="scratch">From scratch</button>
+  <button class="chip" data-f="eval">Evaluation</button>
+  <button class="chip" data-f="tools">Tools</button>
+  <button class="chip" data-f="demo">Live demo</button>
+</div>
+<div id="cards">
 
-<div class="card">
+<div class="card" data-f="scratch" data-repo="latent-diffusion-from-scratch">
   <h3><a href="https://github.com/aghasalim/latent-diffusion-from-scratch">latent-diffusion-from-scratch</a></h3>
-  <p>Autoencoder, DDPM and DDIM. Diffusion in a 4x compressed latent trains
-  5.3x faster than the pixel baseline and scores
-  6.2x better at matched steps.</p>
+  <p>Autoencoder, DDPM and DDIM. Diffusion in a 4x compressed latent trains 5.3x faster than the pixel baseline and scores 6.2x better at matched steps.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="rlhf-ppo-from-scratch">
   <h3><a href="https://github.com/aghasalim/rlhf-ppo-from-scratch">rlhf-ppo-from-scratch</a></h3>
-  <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward
-  climbs to +9.97 while the true objective peaks and then collapses
-  to -1.43, below the policy it started from.</p>
+  <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward climbs to +9.97 while the true objective peaks and then collapses to -1.43, below the policy it started from.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="rectified-flow-from-scratch">
   <h3><a href="https://github.com/aghasalim/rectified-flow-from-scratch">rectified-flow-from-scratch</a></h3>
-  <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric
-  by 15000x and buys single-step sampling at
-  128x less compute for no measurable loss.</p>
+  <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric by 15000x and buys single-step sampling at 128x less compute for no measurable loss.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="flash-attention-from-scratch">
   <h3><a href="https://github.com/aghasalim/flash-attention-from-scratch">flash-attention-from-scratch</a></h3>
-  <p>IO-aware attention, measured rather than assumed. Kernel fusion is worth about
-  3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
+  <p>IO-aware attention, measured rather than assumed. Kernel fusion is worth about 3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="schrodinger-bridge-from-scratch">
   <h3><a href="https://github.com/aghasalim/schrodinger-bridge-from-scratch">schrodinger-bridge-from-scratch</a></h3>
-  <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching.
-  Bridge matching wins by 1.3x to 12x at a quarter the cost.</p>
+  <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching. Bridge matching wins by 1.3x to 12x at a quarter the cost.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="mla-from-scratch">
   <h3><a href="https://github.com/aghasalim/mla-from-scratch">mla-from-scratch</a></h3>
-  <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference
-  verified equal to the naive form to 6e-07. A
-  14.2x KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
+  <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference verified equal to the naive form to 6e-07. A 14.2x KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="world-model-from-scratch">
   <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
-  <p>An RSSM and an actor critic trained entirely in imagination, on a partially observable
-  task where velocity is hidden. The world model works and the agent that learns inside it
-  does not, which the write-up says plainly.</p>
+  <p>An RSSM and an actor critic trained entirely in imagination, on a partially observable task where velocity is hidden. The world model works and the agent that learns inside it does not, which the write-up says plainly.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="scratch" data-repo="vla-from-scratch">
   <h3><a href="https://github.com/aghasalim/vla-from-scratch">vla-from-scratch</a></h3>
-  <p>Four ways a robot policy can emit a continuous action, on demonstrations that route around
-  an obstacle either way. A regression head learns the average of the two and spends
-  8.44 of 24 steps pressed into the wall it should be avoiding, against
-  3.56 for a flow matching head running at 90x the control rate of a diffusion one.</p>
+  <p>Four ways a robot policy can emit a continuous action, on demonstrations that route around an obstacle either way. A regression head learns the average of the two and spends 8.44 of 24 steps pressed into the wall, against 3.56 for a flow matching head running at 90x the control rate of a diffusion one.</p>
+  <div class="meta"></div>
 </div>
 
-<h2>Tools and applied work</h2>
+<div class="card" data-f="eval" data-repo="spurious-ad">
+  <h3><a href="https://github.com/aghasalim/spurious-ad">spurious-ad</a></h3>
+  <p>A planted-confound benchmark for unsupervised anomaly detection that refutes its own premise. AUROC rises to 0.998 while heatmap peaks on the real defect fall from 0.75 to 0.37, a 4.2x effect. Pinning the training confound rate removes it entirely, so it was never a label shortcut. Replicated on real MVTec images across two detectors and two backbones.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="eval demo" data-repo="vlm-hallucination-eval">
+  <h3><a href="https://github.com/aghasalim/vlm-hallucination-eval">vlm-hallucination-eval</a></h3>
+  <p>Object hallucination measured against a hand-verified adversarial set. Accuracy barely moves with phrasing but the hallucination rate more than doubles, 6.0% to 13.4%, when the object is smuggled into the premise. A CLIP verifier cuts it by 25 to 40% relative and costs recall. <a href="https://vlm-hallucination-eval.streamlit.app/">Live demo</a>.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="eval" data-repo="lora-forgetting">
+  <h3><a href="https://github.com/aghasalim/lora-forgetting">lora-forgetting</a></h3>
+  <p>LoRA on Qwen2.5-1.5B for expense extraction, trained on a laptop. Every-field exact match rises 46.7% to 75.6%, ARC moves 0.7 points, and the per-slice breakdown shows two slices getting worse under the headline. Two ARC scoring protocols disagree by 16.7 points on the same model.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="eval demo" data-repo="rl-arm-reward-shaping">
+  <h3><a href="https://github.com/aghasalim/rl-arm-reward-shaping">rl-arm-reward-shaping</a></h3>
+  <p>A 2-link arm, six reward functions, two exploited outright. The distance reward taught the agent to crash on purpose in 200 of 200 episodes. Final PPO agent 43.2% success against 73.5% for a PD controller, but 17.3% collisions against 25.5%. Rewards replayed in seven languages by CI. <a href="https://rl-arm-reward-shaping.streamlit.app/">Live demo</a>.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="eval" data-repo="enas-microcontroller">
+  <h3><a href="https://github.com/aghasalim/enas-microcontroller">enas-microcontroller</a></h3>
+  <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices. 3.7 accuracy points over the hand baseline at equal footprint, with the search's own defects, selecting on test and one seed, written up before the gain.</p>
+  <div class="meta"></div>
+</div>
 
-<div class="card">
+<div class="card" data-f="tools demo" data-repo="groundedness">
+  <h3><a href="https://github.com/aghasalim/groundedness">groundedness</a></h3>
+  <p>Claim-level hallucination check for RAG answers in any language, <code>pip install groundedness</code>. Includes my own XLM-RoBERTa detector trained on 30 languages, served from a Raspberry Pi 5 in Baku and published on <a href="https://huggingface.co/aghasalim/grounded-multilingual-base">Hugging Face</a>. On 434 cases across 31 languages it catches 352 of 372 planted errors, against 265 for Vectara HHEM. <a href="https://grounded.siba.az">Live</a>.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="tools" data-repo="siba-meristem">
+  <h3><a href="https://huggingface.co/aghasalim/siba-meristem-1.0">siba-meristem-1.0</a></h3>
+  <p>Qwen2.5-3B fine-tuned with QLoRA on 167,785 instruction pairs in Azerbaijani, Russian, English and Turkish. Shipped as a 1.9 GB GGUF, so it runs locally with <code>ollama run aghasalim/siba-meristem-1.0</code>. On <a href="https://huggingface.co/aghasalim/siba-meristem-1.0">Hugging Face</a> and <a href="https://ollama.com/aghasalim/siba-meristem-1.0">Ollama</a>.</p>
+  <div class="meta"><span class="k">Model</span> 3B parameters</div>
+</div>
+<div class="card" data-f="tools" data-repo="azbench">
+  <h3><a href="https://github.com/aghasalim/azbench">azbench</a></h3>
+  <p>An Azerbaijani LLM benchmark: Belebele, INCLUDE and TUMLU exam questions, 2148 items, zero-shot, scored by exact letter against any OpenAI-compatible endpoint.</p>
+  <div class="meta"></div>
+</div>
+<div class="card" data-f="tools" data-repo="groundcheck-mcp">
   <h3><a href="https://github.com/aghasalim/groundcheck-mcp">groundcheck-mcp</a></h3>
-  <p>An MCP connector that checks whether a claim is actually grounded, a real quote, a real
-  citation, real code output, with no second language model doing the judging. Works with
-  Claude and Gemini.</p>
+  <p>An MCP connector that checks whether a claim is actually grounded, a real quote, a real citation, real code output, with no second language model doing the judging. Works with Claude and Gemini.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="tools" data-repo="eu-ai-act-rag">
   <h3><a href="https://github.com/aghasalim/eu-ai-act-rag">eu-ai-act-rag</a></h3>
-  <p>Retrieval over Regulation (EU) 2024/1689, graded by a model that is not the one
-  answering. 90.2% faithful.</p>
+  <p>Retrieval over Regulation (EU) 2024/1689, graded by a model that is not the one answering. 90.9% hit rate at 6 and 90.2% faithful on 45 hand-written questions.</p>
+  <div class="meta"></div>
 </div>
-
-<div class="card">
+<div class="card" data-f="tools" data-repo="ieee-fraud-ml">
   <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
-  <p>IEEE-CIS fraud detection done the honest way rather than the version that leaks future
-  data. 0.1044 AUC is what that difference costs, and
-  0.9086 on the private leaderboard, scored against labels I never saw.</p>
+  <p>IEEE-CIS fraud detection done the honest way rather than the version that leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard, scored against labels I never saw.</p>
+  <div class="meta"></div>
+</div>
+</div>
+<p class="empty" id="empty" hidden>Nothing matches.</p>
+
+<h2 id="experience">Experience and education</h2>
+<div class="two">
+<div>
+<ul class="tl">
+  <li><h3>Head of IT, Adscreen</h3><span class="when">Kortrijk, June 2024 to now</span>
+    <p>Real-time ad targeting pipelines in Python and TensorFlow across a fleet of over 1,000 edge devices. Containerised deployments with Docker and Kubernetes, with monitoring and automated recovery for the computer vision analytics service.</p></li>
+  <li><h3>AI developer and student researcher, Howest</h3><span class="when">September 2024 to June 2025</span>
+    <p>Predictive models and transformer NLP pipelines for industry partner projects. Computer vision with CNNs, YOLO and OpenCV, C++ simulation modules, and cross-validation protocols so partner results were reproducible.</p></li>
+  <li><h3>Programming instructor, STEP IT Academy</h3><span class="when">Baku, April 2019 to December 2023</span>
+    <p>Taught programming and AI to over 200 students and supervised capstone projects from preprocessing to deployment. Built microcontroller prototypes with embedded ML models that became reference coursework.</p></li>
+  <li><h3>Founder and team lead, RED RUSH and ARENA FEST</h3><span class="when">Baku, 2024</span>
+    <p>Founded two events, then moved to a remote advisory role. Led over 30 volunteers at Red Bull F1 and Cars and Coffee events.</p></li>
+</ul>
+</div>
+<div>
+<ul class="tl">
+  <li><h3>Howest University of Applied Sciences</h3><span class="when">Bachelor, Creative Technologies and AI, expected 2027</span>
+    <p>Advanced deep learning, computer vision, reinforcement learning, MLOps and AI ethics.</p></li>
+  <li><h3>STEP IT Academy Azerbaijan</h3><span class="when">Diploma, programming and IT, 2017 to 2023</span></li>
+  <li><h3>International STEM Olympiad</h3><span class="when">Gold medal, mathematics, 2022</span></li>
+  <li><h3>Kaggle</h3><span class="when">IEEE-CIS Fraud Detection</span>
+    <p>0.9086 private leaderboard AUC with leakage-safe validation. <a href="https://www.kaggle.com/aghasalimmustafazada">Profile</a>.</p></li>
+</ul>
+</div>
 </div>
 
-<footer>
-  <p>All source on <a href="https://github.com/aghasalim" style="color:var(--acc)">GitHub</a>.
-  Open to AI and backend internships.</p>
-</footer>
+<h2 id="skills">Skills</h2>
+<p class="empty">Only things that appear in the repositories above or that I have shipped at work.</p>
+<div class="skills">
+  <span>Python</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>Bash</span>
+  <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>LightGBM</span><span>Transformers</span><span>PEFT, LoRA and QLoRA</span><span>Ollama and GGUF</span>
+  <span>Diffusion and flow models</span><span>RL, PPO, DPO, GRPO</span><span>Attention kernels</span><span>Computer vision, YOLO, OpenCV, CLIP</span>
+  <span>RAG and retrieval evaluation</span><span>Hallucination detection</span><span>Anomaly detection, PatchCore, PaDiM</span>
+  <span>FastAPI</span><span>Streamlit</span><span>MLflow</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span><span>PostgreSQL</span>
+  <span>Raspberry Pi</span><span>Arduino</span><span>Linux</span>
 </div>
 
+<h2 id="contact">Contact</h2>
+<p>Open to AI and backend internships, in Belgium or remote. Email <a href="mailto:salim.mustafazada@student.howest.be" id="mail">salim.mustafazada@student.howest.be</a>, or message me on <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>.</p>
+
+<footer><p>All source on <a href="https://github.com/aghasalim">GitHub</a>. Built by hand, no framework.</p></footer>
+</div>
 <div class="modal" id="cv-modal" hidden role="dialog" aria-modal="true" aria-label="Curriculum vitae">
   <div class="modal-head">
     <strong>Aghasalim Mustafazada, CV</strong>
@@ -244,6 +347,69 @@ repository it links to.</p>
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !modal.hidden) hide();
   });
+})();
+</script>
+<script>
+(function () {
+  // theme toggle
+  var root = document.documentElement, t = null;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t) root.setAttribute('data-theme', t);
+  document.getElementById('theme').addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // copy email
+  var cm = document.getElementById('copy-mail');
+  cm.addEventListener('click', function () {
+    var addr = document.getElementById('mail').textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(addr) : Promise.reject())
+      .then(function () { cm.textContent = 'Copied'; setTimeout(function () { cm.textContent = 'Copy email'; }, 1500); },
+            function () { location.hash = '#contact'; });
+  });
+
+  // project filter
+  var cards = [].slice.call(document.querySelectorAll('#cards .card')),
+      chips = [].slice.call(document.querySelectorAll('.chip')),
+      q = document.getElementById('q'), f = 'all';
+  function apply() {
+    var s = q.value.trim().toLowerCase(), n = 0;
+    cards.forEach(function (c) {
+      var ok = (f === 'all' || c.dataset.f.split(' ').indexOf(f) >= 0) &&
+               (!s || c.textContent.toLowerCase().indexOf(s) >= 0);
+      c.hidden = !ok; if (ok) n++;
+    });
+    document.getElementById('empty').hidden = n > 0;
+  }
+  chips.forEach(function (ch) { ch.addEventListener('click', function () {
+    chips.forEach(function (x) { x.classList.remove('on'); }); ch.classList.add('on');
+    f = ch.dataset.f; apply(); }); });
+  q.addEventListener('input', apply);
+
+  // live repo metadata from GitHub, best effort, cached for an hour
+  var KEY = 'gh-repos', data = null;
+  try { var c = JSON.parse(localStorage.getItem(KEY)); if (c && Date.now() - c.t < 36e5) data = c.d; } catch (e) {}
+  function fill(d) {
+    cards.forEach(function (c) {
+      var r = d[c.dataset.repo]; if (!r) return;
+      var m = c.querySelector('.meta'), parts = [];
+      if (r.language) parts.push('<span class="k">' + r.language + '</span>');
+      if (r.stargazers_count) parts.push('&#9733; ' + r.stargazers_count);
+      if (r.pushed_at) parts.push('updated ' + new Date(r.pushed_at).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}));
+      m.innerHTML = parts.join(' ');
+    });
+  }
+  if (data) fill(data);
+  else fetch('https://api.github.com/users/aghasalim/repos?per_page=100').then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (list) {
+      var d = {}; list.forEach(function (r) { d[r.name] = {language: r.language, stargazers_count: r.stargazers_count, pushed_at: r.pushed_at}; });
+      try { localStorage.setItem(KEY, JSON.stringify({t: Date.now(), d: d})); } catch (e) {}
+      fill(d);
+    }).catch(function () {});
 })();
 </script>
 </body>
