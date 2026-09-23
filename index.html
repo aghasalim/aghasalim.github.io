@@ -40,6 +40,7 @@
     "https://pypi.org/project/groundedness/",
     "https://orcid.org/0009-0001-8746-4582"
   ],
+  "subjectOf": { "@type": "ScholarlyArticle", "name": "A Multilingual Groundedness Detector that Runs on a Raspberry Pi", "identifier": "https://doi.org/10.2139/ssrn.7497398", "datePublished": "2026" },
   "knowsAbout": ["Machine learning","Deep learning","GPU kernels","Diffusion models","Reinforcement learning from human feedback","Optimal transport","Model evaluation","Anomaly detection","Retrieval augmented generation","Hallucination detection"]
 }
 </script>
@@ -108,7 +109,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
 </head>
 <body>
 <nav><div class="in">
-  <a href="#about">About</a><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+  <a href="#about">About</a><a href="#work">Projects</a><a href="#papers">Papers</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
   <button class="btn sp" type="button" id="theme" aria-label="Toggle dark mode">Theme</button>
 </div></nav>
 <div class="wrap">
@@ -231,7 +232,7 @@ README drifts from the CSV.</p>
 
 <div class="card" data-f="tools demo" data-repo="groundedness">
   <h3><a href="https://github.com/aghasalim/groundedness">groundedness</a></h3>
-  <p>Claim-level hallucination check for RAG answers in any language, <code>pip install groundedness</code>. Includes my own XLM-RoBERTa detector trained on 30 languages, served from a Raspberry Pi 5 in Baku and published on <a href="https://huggingface.co/aghasalim/grounded-multilingual-base">Hugging Face</a>. On 434 cases across 31 languages it catches 352 of 372 planted errors, against 265 for Vectara HHEM. <a href="https://grounded.siba.az">Live</a>.</p>
+  <p>Claim-level hallucination check for RAG answers in any language, <code>pip install groundedness</code>. Includes my own XLM-RoBERTa detector trained on 30 languages, served from a Raspberry Pi 5 in Baku and published on <a href="https://huggingface.co/aghasalim/grounded-multilingual-base">Hugging Face</a>, with the <a href="https://doi.org/10.2139/ssrn.7497398">paper on SSRN</a>. On 434 cases across 31 languages it catches 352 of 372 planted errors, against 265 for Vectara HHEM. <a href="https://grounded.siba.az">Live</a>.</p>
   <div class="meta"></div>
 </div>
 <div class="card" data-f="tools" data-repo="siba-meristem">
@@ -261,6 +262,13 @@ README drifts from the CSV.</p>
 </div>
 </div>
 <p class="empty" id="empty" hidden>Nothing matches.</p>
+
+<h2 id="papers">Publications</h2>
+<div class="card">
+  <h3><a href="https://doi.org/10.2139/ssrn.7497398">A Multilingual Groundedness Detector that Runs on a Raspberry Pi: Trained Token Classification against LLM Judges and English-only Detectors in 31 Languages</a></h3>
+  <p>Aghasalim Mustafazada and Teymur Eyvazov. SSRN, 2026. An XLM-RoBERTa token classifier that marks unsupported spans in RAG answers, benchmarked in 31 languages against LLM judges and the English-only detectors. Code, data and the trained weights are in the <a href="https://github.com/aghasalim/groundedness">groundedness</a> repository.</p>
+  <div class="meta"><span class="k">Preprint</span> DOI 10.2139/ssrn.7497398</div>
+</div>
 
 <h2 id="experience">Experience and education</h2>
 <div class="two">
