@@ -57,6 +57,29 @@ h2{font-size:1.15rem;margin:44px 0 14px;letter-spacing:-.01em}
 .card h3 a:hover{color:var(--acc)}
 .card p{margin:0;color:var(--mut);font-size:.94rem}
 footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
+
+/* CV button */
+.cvbar{margin:18px 0 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.9rem;
+  padding:7px 14px;border:1px solid var(--line);border-radius:7px;background:var(--card);
+  color:var(--fg);cursor:pointer;text-decoration:none;transition:border-color .15s,color .15s}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn svg{width:14px;height:14px;flex:none}
+
+/* CV modal */
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
+  background:rgba(8,10,14,.72);padding:20px}
+.modal-head{display:flex;align-items:center;gap:12px;max-width:1000px;width:100%;
+  margin:0 auto 12px;color:#fff}
+.modal-head strong{font-size:.96rem;font-weight:600;margin-right:auto}
+.modal-head .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+.modal-head .btn:hover{border-color:#fff;color:#fff}
+.modal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;background:var(--card);
+  border-radius:8px;overflow:hidden;min-height:0}
+.modal-body object,.modal-body iframe{width:100%;height:100%;border:0;display:block}
+.modal-fallback{padding:28px;color:var(--mut);font-size:.94rem;text-align:center}
+@media(max-width:640px){.modal{padding:12px}.modal-head strong{display:none}}
 </style>
 </head>
 <body>
@@ -69,6 +92,22 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
     <a href="https://www.kaggle.com/aghasalimmustafazada">Kaggle</a>
     <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>
     <a href="https://orcid.org/0009-0001-8746-4582">ORCID</a>
+  </p>
+  <p class="cvbar">
+    <button class="btn" type="button" id="cv-open" aria-haspopup="dialog">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M2.5 2.5h7l4 4v7a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/>
+        <path d="M9.5 2.5v4h4"/>
+      </svg>
+      View CV
+    </button>
+    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf"
+       download="Aghasalim-Mustafazada-CV.pdf">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M8 2v8"/><path d="M4.5 7l3.5 3.5L11.5 7"/><path d="M2.5 13.5h11"/>
+      </svg>
+      Download PDF
+    </a>
   </p>
 </header>
 
@@ -126,6 +165,14 @@ repository it links to.</p>
   does not, which the write-up says plainly.</p>
 </div>
 
+<div class="card">
+  <h3><a href="https://github.com/aghasalim/vla-from-scratch">vla-from-scratch</a></h3>
+  <p>Four ways a robot policy can emit a continuous action, on demonstrations that route around
+  an obstacle either way. A regression head learns the average of the two and spends
+  8.44 of 24 steps pressed into the wall it should be avoiding, against
+  3.56 for a flow matching head running at 90x the control rate of a diffusion one.</p>
+</div>
+
 <h2>Tools and applied work</h2>
 
 <div class="card">
@@ -153,5 +200,51 @@ repository it links to.</p>
   Open to AI and backend internships.</p>
 </footer>
 </div>
+
+<div class="modal" id="cv-modal" hidden role="dialog" aria-modal="true" aria-label="Curriculum vitae">
+  <div class="modal-head">
+    <strong>Aghasalim Mustafazada, CV</strong>
+    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf" download="Aghasalim-Mustafazada-CV.pdf">Download</a>
+    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    <button class="btn" type="button" id="cv-close" aria-label="Close">Close</button>
+  </div>
+  <div class="modal-body" id="cv-body"></div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('cv-modal'),
+      body  = document.getElementById('cv-body'),
+      open  = document.getElementById('cv-open'),
+      close = document.getElementById('cv-close'),
+      last  = null, loaded = false;
+
+  // The PDF is injected on first open, not on page load, so the 62 KB is only
+  // fetched by people who actually ask for it. <object> falls back to the inner
+  // markup on browsers that will not render a PDF inline, which is most phones.
+  function load() {
+    if (loaded) return;
+    body.innerHTML =
+      '<object data="assets/Aghasalim-Mustafazada-CV.pdf#view=FitH" type="application/pdf">' +
+        '<div class="modal-fallback">Your browser will not display the PDF inline. ' +
+        '<a href="assets/Aghasalim-Mustafazada-CV.pdf" target="_blank" rel="noopener">Open it in a new tab</a> ' +
+        'or <a href="assets/Aghasalim-Mustafazada-CV.pdf" download>download it</a>.</div>' +
+      '</object>';
+    loaded = true;
+  }
+
+  function show() { last = document.activeElement; load(); modal.hidden = false;
+                    document.body.style.overflow = 'hidden'; close.focus(); }
+  function hide() { modal.hidden = true; document.body.style.overflow = '';
+                    if (last) last.focus(); }
+
+  open.addEventListener('click', show);
+  close.addEventListener('click', hide);
+  modal.addEventListener('click', function (e) { if (e.target === modal) hide(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) hide();
+  });
+})();
+</script>
 </body>
 </html>
