@@ -11,8 +11,11 @@
 <meta property="og:url" content="https://aghasalim.github.io/">
 <meta property="og:title" content="Aghasalim Mustafazada | AI engineering, measured">
 <meta property="og:description" content="From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow and more. Every number measured, reproducible, and checked by CI.">
-<meta property="og:image" content="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/nfe-quality.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://aghasalim.github.io/assets/photo.jpg">
+<meta property="og:image:width" content="480">
+<meta property="og:image:height" content="480">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aghasalim.github.io/assets/photo.jpg">
 <meta name="twitter:title" content="Aghasalim Mustafazada | AI engineering, measured">
 <meta name="twitter:description" content="From-scratch implementations of FlashAttention, latent diffusion, RLHF, rectified flow and more. Every number measured and reproducible.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/nfe-quality.png">
@@ -22,6 +25,7 @@
   "@type": "Person",
   "name": "Aghasalim Mustafazada",
   "url": "https://aghasalim.github.io/",
+  "image": "https://aghasalim.github.io/assets/photo.jpg",
   "jobTitle": "AI student and engineer",
   "description": "Third year Creative Technologies and Artificial Intelligence student at Howest, Belgium. Works on anomaly detection, model evaluation and from-scratch implementations of modern AI systems.",
   "alumniOf": [
@@ -70,6 +74,9 @@ h3{margin:0 0 5px;font-size:1rem;font-weight:600}
 .fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
 .fact b{display:block;font-size:1.25rem;letter-spacing:-.01em}
 .fact span{color:var(--mut);font-size:.84rem}
+.hero{display:flex;gap:28px;align-items:flex-start}
+.hero img{width:132px;height:132px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);margin-top:6px}
+@media(max-width:640px){.hero{flex-direction:column;gap:16px}.hero img{width:104px;height:104px}}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 @media(max-width:640px){.two{grid-template-columns:1fr}nav .sp{padding:4px 10px}.fact b{font-size:1.1rem}}
 .tl{list-style:none;margin:0;padding:0}
@@ -114,7 +121,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
   <button class="btn sp" type="button" id="theme" aria-label="Toggle dark mode">Theme</button>
 </div></nav>
 <div class="wrap">
-<header id="about">
+<header id="about" class="hero">
+<img src="assets/photo.jpg" alt="Aghasalim Mustafazada" width="480" height="480">
+<div>
   <h1>Aghasalim Mustafazada</h1>
   <p class="tag">Third year Creative Technologies and AI student at Howest, Kortrijk. Originally from Baku.</p>
   <p class="links">
@@ -139,6 +148,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
     </a>
     <button class="btn" type="button" id="copy-mail">Copy email</button>
   </p>
+</div>
 </header>
 
 <p class="lede">I get suspicious of results that only work on the benchmark, so I check my own
@@ -183,7 +193,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="scratch" data-repo="flash-attention-from-scratch">
   <h3><a href="https://github.com/aghasalim/flash-attention-from-scratch">flash-attention-from-scratch</a></h3>
-  <p>IO-aware attention, measured rather than assumed. Kernel fusion is worth about 3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
+  <p>IO-aware attention, with every speedup measured instead of assumed. Kernel fusion is worth about 3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
   <div class="meta"></div>
 </div>
 <div class="card" data-f="scratch" data-repo="schrodinger-bridge-from-scratch">
@@ -260,7 +270,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="tools" data-repo="ieee-fraud-ml">
   <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
-  <p>IEEE-CIS fraud detection done the honest way rather than the version that leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard, scored against labels I never saw.</p>
+  <p>IEEE-CIS fraud detection with time-ordered validation instead of the shuffled split that leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard, scored against labels I never saw.</p>
   <div class="meta"></div>
 </div>
 </div>
