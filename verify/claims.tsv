@@ -22,3 +22,9 @@ enas_gap	enas-microcontroller	README.md section 6, paired against the baseline o
 enas_wins	enas-microcontroller	README.md section 6, same table, ahead on 5 of 5	copy	5	-	5	on 5 of 5 seeds it never saw
 enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
 enas_seeds	enas-microcontroller	README.md section 6, every candidate is trained from 5 seeds	copy	5	-	5	5 seeds per candidate
+lora_low	lora-forgetting	README.md section 3, sweep table, r=16 seed 1	copy	66.7	-	66.7	between 66.7% and 82.2%
+lora_high	lora-forgetting	README.md section 3, sweep table, r=16 seed 2	copy	82.2	-	82.2	to between 66.7% and 82.2% depending on the seed
+lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy	48.9	-	48.9	rises from 48.9% to
+lora_written	lora-forgetting	README.md section 3, written_amount worse than base in every run	copy	5	-	5	get worse in 5 of 5 runs
+lora_arc	lora-forgetting	README.md section 1, ARC log-likelihood 72.0 minus 71.3	diff4	72.0	71.3	0.7	ARC moves 0.7 points
+lora_protocol	lora-forgetting	README.md section 2, 88.7 generated minus 72.0 ranked	diff4	88.7	72.0	16.7	disagree by 16.7 points
