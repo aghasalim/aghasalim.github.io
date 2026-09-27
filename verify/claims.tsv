@@ -24,16 +24,13 @@ lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy
 lora_protocol	lora-forgetting	README.md section 2, 88.7 generated minus 72.0 ranked	diff4	88.7	72.0	16.7	disagree by 16.7 points
 lora_written	lora-forgetting	README.md section 3, written_amount worse than base in 11 of 15 tuned runs	copy	11	-	11	get worse in 11 of 15 runs
 lora_runs	lora-forgetting	README.md section 3, 5 runs on the 3090 plus 10 on the A5000	copy	15	-	15	rerun 15 times on rented GPUs
-lora_hw	lora-forgetting	README.md section 3, seed 1 gives 66.7 on the 3090 and 71.1 on the A5000, 71.1 minus 66.7 is 4.4	ratio0	4.4	1	4	moves up to 4 points between two GPU models
 enas_full	enas-microcontroller	README.md section 6, full training table, GPU winner mean 0.7643	ratio1	0.7643	0.01	76.4	the winner reaches 76.4%
 enas_base	enas-microcontroller	README.md section 6, full training table, baseline mean 0.7183	ratio1	0.7183	0.01	71.8	against 71.8% for the hand-written baseline
 enas_seeds	enas-microcontroller	README.md section 6, GPU winner ahead on every full training seed	copy	3	-	3	on 3 of 3 seeds
 enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
-enas_searches	enas-microcontroller	README.md section 6, search seeds 0 and 1 clear, seed 2 t(4) = 2.04	copy	2	-	2	2 of 3 independent searches
 enas_c	enas-microcontroller	README.md section 7, worst difference 3.219e-06, in units of 1e-06	round1	3.219	-	3.2	matches PyTorch to 3.2e-06
-wm_short	world-model-from-scratch	README.md, What did not work, all world models run for 57,600 steps	copy	57600	-	57600	At 57,600 environment steps
+wm_short	world-model-from-scratch	README.md, What did not work, all world models run for 57,600 steps	copy	57600	-	57600	At 57,600 steps
 wm_long	world-model-from-scratch	README.md, Given the same 384,000 steps	copy	384000	-	384000	same 384,000 steps as the model-free baseline
 wm_best	world-model-from-scratch	README.md, 384k table, no-recon seed 1 final return -20.51	copy	-20.51	-	-20.51	the best seed reaching -20.51
-wm_mf	world-model-from-scratch	README.md, 384k table, model-free median -35.08	copy	-35.08	-	-35.08	against -35.08 for model-free
-wm_random	world-model-from-scratch	README.md, What did not work, random policy about -36.9	copy	-36.9	-	-36.9	-36.9 for random
+wm_mf	world-model-from-scratch	README.md, 384k table, model-free median -35.08	copy	-35.08	-	-35.08	against -35.08, at about
 wm_cost	world-model-from-scratch	README.md, about 420 s per world model run against about 7 s model-free	ratio0	420	7	60	about 60 times the compute
