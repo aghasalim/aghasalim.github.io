@@ -18,10 +18,6 @@ mla_absorb	mla-from-scratch	README.md line 154	copy	6e-07	-	6e-07	verified equal
 eu_faith	eu-ai-act-rag	README.md line 78	copy	90.2	-	90.2	90.2% faithful
 ieee_gap	ieee-fraud-ml	README.md split table, shuffled global 0.9557 minus chronological fold-local embargo 0.8513	diff4	0.9557	0.8513	0.1044	0.1044 AUC is what that difference costs
 ieee_lb	ieee-fraud-ml	README.md leaderboard table, private leaderboard row	copy	0.9086	-	0.9086	0.9086 on the private leaderboard
-enas_gap	enas-microcontroller	README.md section 6, paired against the baseline on seeds 100 to 104, hill climb gap +0.0249	ratio1	0.0249	0.01	2.5	beats the hand baseline by 2.5 points
-enas_wins	enas-microcontroller	README.md section 6, same table, ahead on 5 of 5	copy	5	-	5	on 5 of 5 seeds it never saw
-enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
-enas_seeds	enas-microcontroller	README.md section 6, every candidate is trained from 5 seeds	copy	5	-	5	5 seeds per candidate
 lora_low	lora-forgetting	README.md section 3, sweep table, r=16 seed 1	copy	66.7	-	66.7	between 66.7% and 82.2%
 lora_high	lora-forgetting	README.md section 3, sweep table, r=16 seed 2	copy	82.2	-	82.2	to between 66.7% and 82.2% depending on the seed
 lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy	48.9	-	48.9	rises from 48.9% to
@@ -29,3 +25,9 @@ lora_protocol	lora-forgetting	README.md section 2, 88.7 generated minus 72.0 ran
 lora_written	lora-forgetting	README.md section 3, written_amount worse than base in 11 of 15 tuned runs	copy	11	-	11	get worse in 11 of 15 runs
 lora_runs	lora-forgetting	README.md section 3, 5 runs on the 3090 plus 10 on the A5000	copy	15	-	15	rerun 15 times on rented GPUs
 lora_hw	lora-forgetting	README.md section 3, seed 1 gives 66.7 on the 3090 and 71.1 on the A5000, 71.1 minus 66.7 is 4.4	ratio0	4.4	1	4	moves up to 4 points between two GPU models
+enas_full	enas-microcontroller	README.md section 6, full training table, GPU winner mean 0.7643	ratio1	0.7643	0.01	76.4	the winner reaches 76.4%
+enas_base	enas-microcontroller	README.md section 6, full training table, baseline mean 0.7183	ratio1	0.7183	0.01	71.8	against 71.8% for the hand-written baseline
+enas_seeds	enas-microcontroller	README.md section 6, GPU winner ahead on every full training seed	copy	3	-	3	on 3 of 3 seeds
+enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
+enas_searches	enas-microcontroller	README.md section 6, search seeds 0 and 1 clear, seed 2 t(4) = 2.04	copy	2	-	2	2 of 3 independent searches
+enas_c	enas-microcontroller	README.md section 7, worst difference 3.219e-06, in units of 1e-06	round1	3.219	-	3.2	matches PyTorch to 3.2e-06

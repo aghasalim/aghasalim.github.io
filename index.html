@@ -239,7 +239,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="eval" data-repo="enas-microcontroller">
   <h3><a href="https://github.com/aghasalim/enas-microcontroller">enas-microcontroller</a></h3>
-  <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices. Rerun on a GPU with 5 seeds per candidate and a random search baseline: the winner beats the hand baseline by 2.5 points on 5 of 5 seeds it never saw, while 33 random draws found nothing better than the baseline.</p>
+  <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices, rerun on rented GPUs with 5 seeds per candidate and a random search baseline. Trained fully, the winner reaches 76.4% on held out CIFAR-10 images against 71.8% for the hand-written baseline, on 3 of 3 seeds, while 33 random draws found nothing better than the baseline. 2 of 3 independent searches find a clear gain. The trained network is exported to C and matches PyTorch to 3.2e-06.</p>
   <div class="meta"></div>
 </div>
 
