@@ -229,7 +229,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="eval" data-repo="lora-forgetting">
   <h3><a href="https://github.com/aghasalim/lora-forgetting">lora-forgetting</a></h3>
-  <p>LoRA on Qwen2.5-1.5B for expense extraction, trained on a laptop and rerun over 3 seeds and 3 ranks on a GPU. Every-field exact match rises from 48.9% to between 66.7% and 82.2% depending on the seed, so the headline is one draw from a wide range. Written-out amounts get worse in 5 of 5 runs, the one slice regression that survived. ARC moves 0.7 points, and two ARC scoring protocols disagree by 16.7 points on the same model.</p>
+  <p>LoRA on Qwen2.5-1.5B for expense extraction, trained on a laptop, then rerun 15 times on rented GPUs over seeds, ranks, epochs and target modules. Every-field exact match rises from 48.9% to between 66.7% and 82.2% depending on the seed, and the same seed moves up to 4 points between two GPU models. One epoch does as well as three. Written-out amounts get worse in 11 of 15 runs, the one slice regression that held. ARC moves under a point on three seeds, and two ARC scoring protocols disagree by 16.7 points on the same model.</p>
   <div class="meta"></div>
 </div>
 <div class="card" data-f="eval demo" data-repo="rl-arm-reward-shaping">

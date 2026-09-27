@@ -25,6 +25,7 @@ enas_seeds	enas-microcontroller	README.md section 6, every candidate is trained 
 lora_low	lora-forgetting	README.md section 3, sweep table, r=16 seed 1	copy	66.7	-	66.7	between 66.7% and 82.2%
 lora_high	lora-forgetting	README.md section 3, sweep table, r=16 seed 2	copy	82.2	-	82.2	to between 66.7% and 82.2% depending on the seed
 lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy	48.9	-	48.9	rises from 48.9% to
-lora_written	lora-forgetting	README.md section 3, written_amount worse than base in every run	copy	5	-	5	get worse in 5 of 5 runs
-lora_arc	lora-forgetting	README.md section 1, ARC log-likelihood 72.0 minus 71.3	diff4	72.0	71.3	0.7	ARC moves 0.7 points
 lora_protocol	lora-forgetting	README.md section 2, 88.7 generated minus 72.0 ranked	diff4	88.7	72.0	16.7	disagree by 16.7 points
+lora_written	lora-forgetting	README.md section 3, written_amount worse than base in 11 of 15 tuned runs	copy	11	-	11	get worse in 11 of 15 runs
+lora_runs	lora-forgetting	README.md section 3, 5 runs on the 3090 plus 10 on the A5000	copy	15	-	15	rerun 15 times on rented GPUs
+lora_hw	lora-forgetting	README.md section 3, seed 1 gives 66.7 on the 3090 and 71.1 on the A5000, 71.1 minus 66.7 is 4.4	ratio0	4.4	1	4	moves up to 4 points between two GPU models
