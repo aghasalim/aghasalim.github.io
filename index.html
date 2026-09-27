@@ -208,7 +208,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="scratch" data-repo="world-model-from-scratch">
   <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
-  <p>An RSSM and an actor critic trained entirely in imagination, on a partially observable task where velocity is hidden. The world model works and the agent that learns inside it does not, which the write-up says plainly.</p>
+  <p>An RSSM and an actor critic trained entirely in imagination, on a pendulum where velocity is hidden. At 57,600 environment steps no world model beats a random policy. Given the same 384,000 steps as the model-free baseline, all three beat it, the best seed reaching -20.51 against -35.08 for model-free and -36.9 for random, though none solves the task and each world model run costs about 60 times the compute.</p>
   <div class="meta"></div>
 </div>
 <div class="card" data-f="scratch" data-repo="vla-from-scratch">
