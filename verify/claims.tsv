@@ -18,3 +18,7 @@ mla_absorb	mla-from-scratch	README.md line 154	copy	6e-07	-	6e-07	verified equal
 eu_faith	eu-ai-act-rag	README.md line 78	copy	90.2	-	90.2	90.2% faithful
 ieee_gap	ieee-fraud-ml	README.md split table, shuffled global 0.9557 minus chronological fold-local embargo 0.8513	diff4	0.9557	0.8513	0.1044	0.1044 AUC is what that difference costs
 ieee_lb	ieee-fraud-ml	README.md leaderboard table, private leaderboard row	copy	0.9086	-	0.9086	0.9086 on the private leaderboard
+enas_gap	enas-microcontroller	README.md section 6, paired against the baseline on seeds 100 to 104, hill climb gap +0.0249	ratio1	0.0249	0.01	2.5	beats the hand baseline by 2.5 points
+enas_wins	enas-microcontroller	README.md section 6, same table, ahead on 5 of 5	copy	5	-	5	on 5 of 5 seeds it never saw
+enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
+enas_seeds	enas-microcontroller	README.md section 6, every candidate is trained from 5 seeds	copy	5	-	5	5 seeds per candidate
