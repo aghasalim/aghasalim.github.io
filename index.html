@@ -151,15 +151,14 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:v
 </div>
 </header>
 
-<p class="lede">I get suspicious of results that only work on the benchmark, so I check my own
-numbers before anyone else does. Most of what is below is either a known system rebuilt
+<p class="lede">I don't trust a number until I have reproduced it myself. Most of what is below is either a known system rebuilt
 from the paper and measured on my own laptop, or an evaluation where the interesting
 part turned out to be that the obvious story was wrong. Every figure came from a run in
 the repository it links to, and most of those repositories fail their own CI if the
 README drifts from the CSV.</p>
 
 <div class="facts">
-  <div class="fact"><b>0.9086</b><span>IEEE-CIS private leaderboard AUC, labels I never saw</span></div>
+  <div class="fact"><b>0.9086</b><span>IEEE-CIS private leaderboard AUC, on Kaggle's hidden test set</span></div>
   <div class="fact"><b>Gold</b><span>International STEM Olympiad, mathematics, 2022</span></div>
   <div class="fact"><b>95%</b><span>planted errors caught by my multilingual groundedness detector, 31 languages</span></div>
   <div class="fact"><b>200+</b><span>students taught programming and AI at STEP IT Academy</span></div>
@@ -270,7 +269,7 @@ README drifts from the CSV.</p>
 </div>
 <div class="card" data-f="tools" data-repo="ieee-fraud-ml">
   <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
-  <p>IEEE-CIS fraud detection validated in time order, since a shuffled split leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard, scored against labels I never saw.</p>
+  <p>IEEE-CIS fraud detection validated in time order, since a shuffled split leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard.</p>
   <div class="meta"></div>
 </div>
 </div>
@@ -304,7 +303,7 @@ README drifts from the CSV.</p>
   <li><h3>STEP IT Academy Azerbaijan</h3><span class="when">Diploma, programming and IT, 2017 to 2023</span></li>
   <li><h3>International STEM Olympiad</h3><span class="when">Gold medal, mathematics, 2022</span></li>
   <li><h3>Kaggle</h3><span class="when">IEEE-CIS Fraud Detection</span>
-    <p>0.9086 private leaderboard AUC with leakage-safe validation. <a href="https://www.kaggle.com/aghasalimmustafazada">Profile</a>.</p></li>
+    <p>Time-ordered folds with a 30-day embargo, so validation never sees the future. <a href="https://www.kaggle.com/aghasalimmustafazada">Profile</a>.</p></li>
 </ul>
 </div>
 </div>
