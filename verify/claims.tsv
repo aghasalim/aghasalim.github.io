@@ -34,3 +34,7 @@ wm_long	world-model-from-scratch	README.md, Given the same 384,000 steps	copy	38
 wm_best	world-model-from-scratch	README.md, 384k table, no-recon seed 1 final return -20.51	copy	-20.51	-	-20.51	the best seed reaching -20.51
 wm_mf	world-model-from-scratch	README.md, 384k table, model-free median -35.08	copy	-35.08	-	-35.08	against -35.08, at about
 wm_cost	world-model-from-scratch	README.md, about 420 s per world model run against about 7 s model-free	ratio0	420	7	60	about 60 times the compute
+az_items	azbench	README.md and the Hugging Face card, 900 + 548 + 700 questions	copy	2148	-	2148	benchmark of 2,148 questions
+az_meristem	azbench	results/ollama/summary.json, SIBA Meristem include-az 219 of 548	copy	40.0	-	40.0	scores 40.0% on exam questions
+az_base	azbench	results/ollama/summary.json, Qwen2.5-3B include-az 202 of 548	copy	36.9	-	36.9	against 36.9% for its base model
+az_reading	azbench	results/ollama/summary.json, belebele-az 45.2 for the base minus 38.9 for Meristem	diff4	45.2	38.9	6.3	loses 6.3 points on reading comprehension
