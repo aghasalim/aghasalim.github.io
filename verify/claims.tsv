@@ -42,3 +42,6 @@ gl_tasks	gemma4-code-graph-localization	tasks.jsonl, 129 rows	copy	129	-	129	129
 gl_embed	gemma4-code-graph-localization	results.jsonl, embed_file@5 sums to 37 over 128 tasks	copy	37	-	37	top five for 37 of 128 tasks
 gl_grep	gemma4-code-graph-localization	results.jsonl, grep_file@5 sums to 52 over 128 tasks	copy	52	-	52	plain grep for 52
 gl_bm25	gemma4-code-graph-localization	results.jsonl, bm25_src_file@5 sums to 82 over 128 tasks	copy	82	-	82	filtered out for 82
+arc_train	arc-prize-2026	arc-prize-2026 README.md results table, 39 of 1,000 training	copy	39	-	39	solves 39 of 1,000 training tasks
+arc_eval	arc-prize-2026	arc-prize-2026 README.md results table, 0 of 120 evaluation	copy	0	-	0	and 0 of 120 evaluation tasks
+arc_wrong	arc-prize-2026	arc-prize-2026 notes/METHODS.md section 3, 3 wrong of 42 believed	copy	3	-	3	3 of 42 fit every example
