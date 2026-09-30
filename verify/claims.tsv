@@ -38,3 +38,7 @@ az_items	azbench	README.md and the Hugging Face card, 900 + 548 + 700 questions	
 az_meristem	azbench	results/ollama/summary.json, SIBA Meristem include-az 219 of 548	copy	40.0	-	40.0	scores 40.0% on exam questions
 az_base	azbench	results/ollama/summary.json, Qwen2.5-3B include-az 202 of 548	copy	36.9	-	36.9	against 36.9% for its base model
 az_reading	azbench	results/ollama/summary.json, belebele-az 45.2 for the base minus 38.9 for Meristem	diff4	45.2	38.9	6.3	loses 6.3 points on reading comprehension
+gl_tasks	gemma4-code-graph-localization	tasks.jsonl, 129 rows	copy	129	-	129	129 training tasks
+gl_embed	gemma4-code-graph-localization	results.jsonl, embed_file@5 sums to 37 over 128 tasks	copy	37	-	37	top five for 37 of 128 tasks
+gl_grep	gemma4-code-graph-localization	results.jsonl, grep_file@5 sums to 52 over 128 tasks	copy	52	-	52	plain grep for 52
+gl_bm25	gemma4-code-graph-localization	results.jsonl, bm25_src_file@5 sums to 82 over 128 tasks	copy	82	-	82	filtered out for 82

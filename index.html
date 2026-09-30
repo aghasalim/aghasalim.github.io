@@ -237,6 +237,11 @@ README drifts from the CSV.</p>
   <p>A 2-link arm, six reward functions, two exploited outright. The distance reward taught the agent to crash on purpose in 200 of 200 episodes. Final PPO agent 43.2% success against 73.5% for a PD controller, but 17.3% collisions against 25.5%. Rewards replayed in seven languages by CI. <a href="https://rl-arm-reward-shaping.streamlit.app/">Live demo</a>.</p>
   <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003674">DOI 10.5281/zenodo.23003674</a></div>
 </div>
+<div class="card" data-f="eval" data-repo="gemma4-code-graph-localization">
+  <h3><a href="https://github.com/aghasalim/gemma4-code-graph-localization">gemma4-code-graph-localization</a></h3>
+  <p>Do the code search tools in Google's Gemma 4 agent competition on Kaggle point at the code a fix changes? Measured on the 129 training tasks with no model in the loop, the harness's embedding search puts an edited file in its top five for 37 of 128 tasks, plain grep for 52, and BM25 with test code filtered out for 82. The audit also found the released graph leaves out almost every async function. Draft for the competition's paper track.</p>
+  <div class="meta"><span class="k">Paper draft</span> <a href="https://github.com/aghasalim/gemma4-code-graph-localization/blob/main/PAPER.md">Read the draft</a></div>
+</div>
 <div class="card" data-f="eval" data-repo="enas-microcontroller" data-doi="10.5281/zenodo.23003622">
   <h3><a href="https://github.com/aghasalim/enas-microcontroller">enas-microcontroller</a></h3>
   <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices. Fully trained, the winner reaches 76.4% on held out CIFAR-10 against 71.8% for the hand-written baseline, on 3 of 3 seeds, and 33 random draws found nothing better than the baseline. Exported to C, it matches PyTorch to 3.2e-06.</p>
