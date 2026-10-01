@@ -217,6 +217,11 @@ README drifts from the CSV.</p>
   <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003685">DOI 10.5281/zenodo.23003685</a></div>
 </div>
 
+<div class="card" data-f="eval tools" data-repo="model-nerf-watch">
+  <h3><a href="https://github.com/aghasalim/model-nerf-watch">model-nerf-watch</a></h3>
+  <p>Is my model quietly getting worse? A daily canary with confidence intervals instead of vibes. Three runs of the same local model land on 90.0% every time, so the noise floor is a 6.4 point interval, not observed drift. That means 60 probes can see a 20 point drop and cannot see a 5 point one, and the README says how many probes you would need. A planted downgrade to a model half the size is caught at p of 1e-08, and the first attempt showed why a token budget change looks exactly like a nerf.</p>
+  <div class="meta"></div>
+</div>
 <div class="card" data-f="eval" data-repo="offline-live-captions">
   <h3><a href="https://github.com/aghasalim/offline-live-captions">offline-live-captions</a></h3>
   <p>Live captions for deaf and hard of hearing people that never touch the network, with the accuracy nobody publishes. On an M4, whisper turbo reaches 5.1% word error rate on clean speech and 11.0% in a simulated noisy room, with captions 1.7 seconds after you stop talking. The tiny model goes past 100% error at the loudest noise level because it invents words that were never said. On Indian and South Asian accents turbo gets 12.9% against 35.2% for tiny. A test asserts no socket opens except localhost, so the privacy claim is checkable.</p>
