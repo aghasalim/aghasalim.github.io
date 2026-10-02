@@ -168,11 +168,11 @@ README drifts from the CSV.</p>
 <h2 id="work">Projects</h2>
 <div class="filters">
   <input type="search" id="q" placeholder="Filter projects, e.g. diffusion, RL, hallucination" aria-label="Filter projects">
-  <button class="chip on" data-f="all">All</button>
-  <button class="chip" data-f="scratch">From scratch</button>
-  <button class="chip" data-f="eval">Evaluation</button>
-  <button class="chip" data-f="tools">Tools</button>
-  <button class="chip" data-f="demo">Live demo</button>
+  <button class="chip on" type="button" aria-pressed="true" data-f="all">All</button>
+  <button class="chip" type="button" aria-pressed="false" data-f="scratch">From scratch</button>
+  <button class="chip" type="button" aria-pressed="false" data-f="eval">Evaluation</button>
+  <button class="chip" type="button" aria-pressed="false" data-f="tools">Tools</button>
+  <button class="chip" type="button" aria-pressed="false" data-f="demo">Live demo</button>
 </div>
 <div id="cards">
 
@@ -432,7 +432,8 @@ README drifts from the CSV.</p>
     document.getElementById('empty').hidden = n > 0;
   }
   chips.forEach(function (ch) { ch.addEventListener('click', function () {
-    chips.forEach(function (x) { x.classList.remove('on'); }); ch.classList.add('on');
+    chips.forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+    ch.classList.add('on'); ch.setAttribute('aria-pressed', 'true');
     f = ch.dataset.f; apply(); }); });
   q.addEventListener('input', apply);
 
