@@ -8,6 +8,8 @@
 <meta name="author" content="Aghasalim Mustafazada">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/photo.jpg">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<meta name="theme-color" content="#0a0a0a">
 <link rel="canonical" href="https://aghasalim.github.io/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://aghasalim.github.io/">
@@ -146,7 +148,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
 <div class="top">
   <h1><u>Hi, I'm Aghasalim Mustafazada</u></h1>
   <div style="display:flex;gap:8px;align-items:center">
-    <button class="btn iconbtn" type="button" id="theme" aria-label="Toggle light and dark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg></button>
+    <button class="btn iconbtn" type="button" id="theme" aria-label="Light mode" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg></button>
     <img class="photo" src="assets/photo.jpg" alt="Aghasalim Mustafazada" width="64" height="64">
   </div>
 </div>
@@ -525,7 +527,16 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
     var next = dark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) {}
+    sync();
   });
+  function sync() {
+    var light = root.getAttribute('data-theme') === 'light';
+    var b = document.getElementById('theme');
+    b.setAttribute('aria-pressed', light ? 'true' : 'false');
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', light ? '#fafafa' : '#0a0a0a');
+  }
+  sync();
 
   // copy email
   var cm = document.getElementById('copy-mail');
