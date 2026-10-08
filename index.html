@@ -89,6 +89,7 @@ h2 .see:hover{color:var(--fg)}
 .tools{color:var(--mut);line-height:2.1}
 .tool{display:inline-flex;align-items:center;gap:6px;background:var(--pill);border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--fg);font-size:.86rem;vertical-align:middle;margin:0 2px}
 .tool img{width:16px;height:16px;border-radius:3px}
+.updated{margin:-6px 0 14px;font-size:.8rem;color:var(--mut)}
 .now{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
 .now li{display:flex;gap:12px;color:var(--mut);font-size:.92rem;line-height:1.6}
 .now b{color:var(--fg);font-weight:600}
@@ -178,6 +179,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
 </section>
 
 <h2 id="now">Right now</h2>
+<p class="updated">Last updated 9 October 2026.</p>
 <ul class="now">
   <li><span class="dot live"></span><div><b>ARC Prize 2026, ARC-AGI-2.</b> My own DSL program search scores 0.00 on the hidden set, and the <a href="https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/nothing-to-verify-why-a-verified-dsl-search-score">paper track write-up</a> explains why. On the leaderboard I run the public NVARC Qwen3 4B notebook as a baseline, best 31.39, and I measured that identical reruns of it land anywhere from 27 to 31. Now I am training it further on the puzzles it gets wrong: on a rented H100 the held-out loss on those puzzles fell from 0.249 to 0.178, and a smaller version is training on my MacBook before I trust it with a submission.</div></li>
   <li><span class="dot live"></span><div><b>Is my model getting worse?</b> <a href="https://github.com/aghasalim/model-nerf-watch">model-nerf-watch</a> scores a model on fixed probes every day with a confidence interval. The honest result so far is how little 60 probes can see: a 20 point drop, not a 5 point one.</div></li>
