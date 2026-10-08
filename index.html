@@ -49,306 +49,408 @@
   "knowsAbout": ["Machine learning","Deep learning","GPU kernels","Diffusion models","Reinforcement learning from human feedback","Optimal transport","Model evaluation","Anomaly detection","Retrieval augmented generation","Hallucination detection"]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--fg:#1a1a1a;--mut:#5b6270;--line:#e3e6ea;--acc:#0b5fff;--bg:#fff;--card:#fafbfc;--chip:#eef2f7}
-:root[data-theme=dark]{--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25;--chip:#232833}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--fg:#e8eaed;--mut:#9aa3b2;--line:#2a2f38;--acc:#6ea8ff;--bg:#14171c;--card:#1a1e25;--chip:#232833}}
+:root{--bg:#0a0a0a;--fg:#d6d6d6;--mut:#8b8b8b;--line:#232323;--card:#111;--chip:#1a1a1a;--acc:#fff;--pill:#161616;--h0:#1b1b1b;--h1:#2f3b4d;--h2:#3b5a8a;--h3:#4f7fc2;--h4:#7fb0ff;color-scheme:dark}
+:root[data-theme=light]{--bg:#fafafa;--fg:#1c1c1c;--mut:#6b6b6b;--line:#e4e4e4;--card:#fff;--chip:#f0f0f0;--acc:#000;--pill:#f3f3f3;--h0:#ebedf0;--h1:#c6dbf7;--h2:#8fb8ef;--h3:#4f8de0;--h4:#1f5fc4;color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
-a{color:var(--acc)}
-.wrap{max-width:900px;margin:0 auto;padding:40px 22px 80px}
-nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-nav .in{max-width:900px;margin:0 auto;padding:10px 22px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:.9rem}
-nav a{color:var(--mut);text-decoration:none}
-nav a:hover{color:var(--acc)}
-nav .sp{margin-left:auto}
-h1{font-size:2.2rem;line-height:1.15;margin:0 0 6px;letter-spacing:-.02em}
-h2{font-size:1.2rem;margin:52px 0 16px;letter-spacing:-.01em;padding-bottom:6px;border-bottom:1px solid var(--line)}
-h3{margin:0 0 5px;font-size:1rem;font-weight:600}
-.tag{color:var(--mut);margin:0 0 14px;font-size:1.05rem}
-.links a{text-decoration:none;margin-right:16px;font-size:.94rem}
-.links a:hover{text-decoration:underline}
-.lede{margin:22px 0 8px}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 0}
-.fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.fact b{display:block;font-size:1.25rem;letter-spacing:-.01em}
-.fact span{color:var(--mut);font-size:.84rem}
-.hero{display:flex;gap:28px;align-items:flex-start}
-.hero img{width:132px;height:132px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);margin-top:6px}
-@media(max-width:640px){.hero{flex-direction:column;gap:16px}.hero img{width:104px;height:104px}}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media(max-width:640px){.two{grid-template-columns:1fr}nav .sp{padding:4px 10px}.fact b{font-size:1.1rem}}
-.tl{list-style:none;margin:0;padding:0}
-.tl li{padding:0 0 16px 16px;border-left:2px solid var(--line);position:relative}
-.tl li:before{content:"";position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:700px;margin:0 auto;padding:56px 22px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:2rem;margin:0;letter-spacing:.01em}
+h1 u{text-decoration:none;border-bottom:1px solid var(--mut);padding-bottom:2px}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.45rem;margin:52px 0 14px;display:flex;align-items:center;gap:14px}
+h2:after{content:"";flex:1;height:1px;background:var(--line)}
+h2 .see{font:inherit;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.82rem;color:var(--mut);background:none;border:0;cursor:pointer;padding:0}
+h2 .see:hover{color:var(--fg)}
+.bio p{margin:14px 0;color:var(--mut)}
+.bio b{color:var(--fg);font-weight:600}
+.cta{margin:26px 0 10px;font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.pill,.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.82rem;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--pill);color:var(--fg);cursor:pointer;text-decoration:none;line-height:1.3}
+.pill:hover,.btn:hover{border-color:var(--mut)}
+.pill svg,.btn svg{width:13px;height:13px;flex:none}
+.iconbtn{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}
+.photo{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.heat{margin:4px 0 8px;overflow-x:auto}
+.heat .months{display:grid;grid-template-columns:repeat(53,11px);gap:2px;font-size:10px;color:var(--mut);margin-bottom:4px;min-width:687px}
+.heat .grid{display:grid;grid-template-rows:repeat(7,11px);grid-auto-flow:column;grid-auto-columns:11px;gap:2px;min-width:687px}
+.heat i{display:block;width:11px;height:11px;border-radius:2px;background:var(--h0)}
+.heat .l1{background:var(--h1)}.heat .l2{background:var(--h2)}.heat .l3{background:var(--h3)}.heat .l4{background:var(--h4)}
+.heat .legend{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--mut);margin-top:6px;min-width:687px}
+.heat .scale{display:inline-flex;align-items:center;gap:3px}.heat .scale i{width:10px;height:10px;display:inline-block}
+.tools{color:var(--mut);line-height:2.1}
+.tool{display:inline-flex;align-items:center;gap:6px;background:var(--pill);border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--fg);font-size:.86rem;vertical-align:middle;margin:0 2px}
+.tool img{width:16px;height:16px;border-radius:3px}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 14px}
+.tl li:before{content:"";position:absolute;left:-22px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--mut)}
+.tl li.now:before{background:var(--h4);box-shadow:0 0 0 4px rgba(127,176,255,.15)}
+.tl .org{color:var(--mut);font-size:.84rem;text-transform:uppercase;letter-spacing:.06em}
+.tl h3{margin:2px 0 2px;font-size:1rem;font-weight:600}
 .tl .when{color:var(--mut);font-size:.84rem}
-.tl p{margin:2px 0 0;color:var(--mut);font-size:.92rem}
+.tl p{margin:6px 0 0;color:var(--mut);font-size:.9rem}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;align-items:center}
-.filters input{flex:1;min-width:180px;font:inherit;font-size:.9rem;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg)}
-.chip{font:inherit;font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--mut);cursor:pointer}
-.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.card{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:18px 0}
-.card h3 a{color:var(--fg);text-decoration:none}
-.card h3 a:hover{color:var(--acc)}
-.card p{margin:0;color:var(--mut);font-size:.94rem}
-.card .meta{margin-top:5px;font-size:.8rem;color:var(--mut);display:flex;gap:12px;flex-wrap:wrap}
-.card .meta .k{background:var(--chip);border-radius:4px;padding:0 6px}
+.filters input{flex:1;min-width:160px;font:inherit;font-size:.86rem;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--pill);color:var(--fg)}
+.chip{font:inherit;font-size:.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--mut);cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+#cards{display:flex;flex-direction:column;gap:14px}
+.card{display:grid;grid-template-columns:240px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
 .card[hidden]{display:none}
-.empty{color:var(--mut);font-size:.92rem}
-.skills{display:flex;flex-wrap:wrap;gap:8px}
-.skills span{background:var(--chip);border-radius:6px;padding:4px 10px;font-size:.88rem}
-footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
-.cvbar{margin:18px 0 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:.9rem;padding:7px 14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;transition:border-color .15s,color .15s}
-.btn:hover{border-color:var(--acc);color:var(--acc)}
-.btn svg{width:14px;height:14px;flex:none}
+.card.more{display:none}
+#cards.all .card.more{display:grid}
+#cards.all .card.more[hidden]{display:none}
+.shot{display:flex;align-items:center;background:#0e0e0e;border-right:1px solid var(--line);overflow:hidden;padding:10px}
+.shot img{width:100%;height:auto;max-height:100%;object-fit:contain;display:block;border-radius:6px}
+.shot.noimg{display:flex;align-items:center;justify-content:center;font-family:"Instrument Serif",Georgia,serif;font-size:1.6rem;color:var(--mut)}
+.card .body{padding:16px 18px;min-width:0}
+.card h3{margin:0 0 6px;font-size:1rem;font-weight:600}
+.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0 0 10px;color:var(--mut);font-size:.86rem;line-height:1.55}
+.stack{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
+.stack span{font-size:.72rem;background:var(--chip);border:1px solid var(--line);border-radius:5px;padding:1px 7px;color:var(--mut)}
+.btns{display:flex;flex-wrap:wrap;gap:7px}
+.card .meta{margin-top:8px;font-size:.74rem;color:var(--mut)}
+.card .meta .k{display:none}
+.empty{color:var(--mut);font-size:.9rem}
+.pub{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:16px 18px;margin:0 0 12px}
+.pub h3{margin:0 0 6px;font-size:1rem;font-weight:600}.pub h3 a{text-decoration:none}.pub h3 a:hover{text-decoration:underline}
+.pub p{margin:0 0 8px;color:var(--mut);font-size:.88rem}
+.pub .pmeta{font-size:.78rem;color:var(--mut)}.pub .pmeta .k{background:var(--chip);border-radius:4px;padding:0 6px;margin-right:6px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:640px){.card{grid-template-columns:1fr}.shot{border-right:0;border-bottom:1px solid var(--line);max-height:220px}.wrap{padding-top:36px}}
+/* CV modal */
 .modal[hidden]{display:none}
-.modal{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:rgba(8,10,14,.72);padding:20px}
+.modal{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:rgba(0,0,0,.8);padding:20px}
 .modal-head{display:flex;align-items:center;gap:12px;max-width:1000px;width:100%;margin:0 auto 12px;color:#fff}
 .modal-head strong{font-size:.96rem;font-weight:600;margin-right:auto}
 .modal-head .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
-.modal-head .btn:hover{border-color:#fff;color:#fff}
-.modal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;background:var(--card);border-radius:8px;overflow:hidden;min-height:0}
+.modal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;background:#111;border-radius:8px;overflow:hidden;min-height:0}
 .modal-body object,.modal-body iframe{width:100%;height:100%;border:0;display:block}
-.modal-fallback{padding:28px;color:var(--mut);font-size:.94rem;text-align:center}
+.modal-fallback{padding:28px;color:#aaa;font-size:.94rem;text-align:center}
 @media(max-width:640px){.modal{padding:12px}.modal-head strong{display:none}}
 </style>
 </head>
 <body>
-<nav><div class="in">
-  <a href="#about">About</a><a href="#work">Projects</a><a href="#papers">Papers</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
-  <button class="btn sp" type="button" id="theme" aria-label="Toggle dark mode">Theme</button>
-</div></nav>
 <div class="wrap">
-<header id="about" class="hero">
-<img src="assets/photo.jpg" alt="Aghasalim Mustafazada" width="480" height="480">
-<div>
-  <h1>Aghasalim Mustafazada</h1>
-  <p class="tag">Third year Creative Technologies and AI student at Howest, Kortrijk. Originally from Baku.</p>
-  <p class="links">
-    <a href="https://github.com/aghasalim">GitHub</a>
-    <a href="https://www.kaggle.com/aghasalimmustafazada">Kaggle</a>
-    <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>
-    <a href="https://huggingface.co/aghasalim">Hugging Face</a>
-    <a href="https://ollama.com/aghasalim">Ollama</a>
-    <a href="https://pypi.org/project/groundedness/">PyPI</a>
-    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7497398">SSRN paper</a>
-    <a href="https://scholar.google.com/citations?user=5W_YYFAAAAAJ">Google Scholar</a>
-    <a href="https://orcid.org/0009-0001-8746-4582">ORCID</a>
-    <a href="https://zenodo.org/search?q=creators.orcid%3A%220009-0001-8746-4582%22">Zenodo</a>
-  </p>
-  <p class="cvbar">
-    <button class="btn" type="button" id="cv-open" aria-haspopup="dialog">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 2.5h7l4 4v7a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/><path d="M9.5 2.5v4h4"/></svg>
-      View CV
-    </button>
-    <a class="btn" href="assets/Aghasalim-Mustafazada-CV.pdf" download="Aghasalim-Mustafazada-CV.pdf">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8"/><path d="M4.5 7l3.5 3.5L11.5 7"/><path d="M2.5 13.5h11"/></svg>
-      Download PDF
-    </a>
-    <button class="btn" type="button" id="copy-mail" aria-live="polite">Copy email</button>
-  </p>
-</div>
-</header>
-
-<p class="lede">I don't trust a number until I have reproduced it myself. Most of what is below is either a known system rebuilt
-from the paper and measured on my own laptop, or an evaluation where the interesting
-part turned out to be that the obvious story was wrong. Every figure came from a run in
-the repository it links to, and most of those repositories fail their own CI if the
-README drifts from the CSV.</p>
-
-<div class="facts">
-  <div class="fact"><b>0.9086</b><span>IEEE-CIS private leaderboard AUC, on Kaggle's hidden test set</span></div>
-  <div class="fact"><b>Gold</b><span>International STEM Olympiad, mathematics, 2022</span></div>
-  <div class="fact"><b>95%</b><span>planted errors caught by my multilingual groundedness detector, 31 languages</span></div>
-  <div class="fact"><b>200+</b><span>students taught programming and AI at STEP IT Academy</span></div>
+<div class="top">
+  <h1><u>Hi, I'm Aghasalim Mustafazada</u></h1>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="btn iconbtn" type="button" id="theme" aria-label="Toggle light and dark"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg></button>
+    <img class="photo" src="assets/photo.jpg" alt="Aghasalim Mustafazada" width="64" height="64">
+  </div>
 </div>
 
-<h2 id="work">Projects</h2>
+<div class="bio" id="about">
+<p>I'm a third year <b>AI student</b> at Howest in Kortrijk, Belgium, originally from Baku. I spend most of my time on <b>anomaly detection</b> and <b>model evaluation</b>, and I don't trust a number until I have <b>reproduced it myself</b>. Most of what is on this page is either a known system <b>rebuilt from the paper</b> and measured on my own laptop, or an evaluation where the interesting part turned out to be that the obvious story was <b>wrong</b>.</p>
+<p>Every figure below came from a run in the repository it links to, and most of those repositories <b>fail their own CI</b> if the README drifts from the CSV. Outside the from-scratch work I built a <b>multilingual hallucination detector</b> that runs on a Raspberry Pi, a <b>benchmark for Azerbaijani LLMs</b>, and <b>offline accessibility tools</b> for deaf and blind users. Before Belgium I taught programming and AI to <b>200+ students</b> in Baku, and I run the IT side of a digital signage company with <b>1,000+ edge devices</b>.</p>
+<p>Beyond work, I like <b>mathematics olympiads</b> (a gold medal in 2022), <b>events</b> (I founded two in Baku) and <b>cycling</b> around Kortrijk.</p>
+</div>
+
+<p class="cta">Want to work together, or just say hi?</p>
+<p class="pills">
+  <a class="pill" href="https://github.com/aghasalim"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+  <a class="pill" href="https://www.kaggle.com/aghasalimmustafazada">Kaggle</a>
+  <a class="pill" href="https://linkedin.com/in/mustafazada"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 6.2H1.2V15h2.4zM2.4 2a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8zM15 9.6c0-2.7-1.4-3.7-3.2-3.7-1.2 0-2 .6-2.4 1.3V6.2H7V15h2.4v-4.6c0-1.2.5-2 1.6-2s1.5.9 1.5 2V15H15z"/></svg>LinkedIn</a>
+  <button class="pill" type="button" id="cv-open" aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 2.5h7l4 4v7a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/><path d="M9.5 2.5v4h4"/></svg>Resume</button>
+  <a class="pill" href="https://huggingface.co/aghasalim">Hugging Face</a>
+  <a class="pill" href="https://scholar.google.com/citations?user=5W_YYFAAAAAJ">Scholar</a>
+  <button class="pill" type="button" id="copy-mail" aria-live="polite">Copy email</button>
+</p>
+
+<section class="heat" aria-label="GitHub contributions">
+  <div class="months"><span style="grid-column:5">Nov</span><span style="grid-column:10">Dec</span><span style="grid-column:14">Jan</span><span style="grid-column:18">Feb</span><span style="grid-column:22">Mar</span><span style="grid-column:27">Apr</span><span style="grid-column:31">May</span><span style="grid-column:36">Jun</span><span style="grid-column:40">Jul</span><span style="grid-column:44">Aug</span><span style="grid-column:49">Sep</span></div>
+  <div class="grid"><i class="l0" title="0 on 2025-10-05"></i><i class="l0" title="0 on 2025-10-06"></i><i class="l0" title="0 on 2025-10-07"></i><i class="l0" title="0 on 2025-10-08"></i><i class="l0" title="0 on 2025-10-09"></i><i class="l0" title="0 on 2025-10-10"></i><i class="l0" title="0 on 2025-10-11"></i><i class="l0" title="0 on 2025-10-12"></i><i class="l0" title="0 on 2025-10-13"></i><i class="l0" title="0 on 2025-10-14"></i><i class="l0" title="0 on 2025-10-15"></i><i class="l0" title="0 on 2025-10-16"></i><i class="l0" title="0 on 2025-10-17"></i><i class="l0" title="0 on 2025-10-18"></i><i class="l0" title="0 on 2025-10-19"></i><i class="l0" title="0 on 2025-10-20"></i><i class="l0" title="0 on 2025-10-21"></i><i class="l0" title="0 on 2025-10-22"></i><i class="l0" title="0 on 2025-10-23"></i><i class="l0" title="0 on 2025-10-24"></i><i class="l0" title="0 on 2025-10-25"></i><i class="l0" title="0 on 2025-10-26"></i><i class="l0" title="0 on 2025-10-27"></i><i class="l0" title="0 on 2025-10-28"></i><i class="l0" title="0 on 2025-10-29"></i><i class="l0" title="0 on 2025-10-30"></i><i class="l0" title="0 on 2025-10-31"></i><i class="l0" title="0 on 2025-11-01"></i><i class="l0" title="0 on 2025-11-02"></i><i class="l0" title="0 on 2025-11-03"></i><i class="l0" title="0 on 2025-11-04"></i><i class="l0" title="0 on 2025-11-05"></i><i class="l0" title="0 on 2025-11-06"></i><i class="l0" title="0 on 2025-11-07"></i><i class="l0" title="0 on 2025-11-08"></i><i class="l0" title="0 on 2025-11-09"></i><i class="l0" title="0 on 2025-11-10"></i><i class="l0" title="0 on 2025-11-11"></i><i class="l0" title="0 on 2025-11-12"></i><i class="l0" title="0 on 2025-11-13"></i><i class="l0" title="0 on 2025-11-14"></i><i class="l0" title="0 on 2025-11-15"></i><i class="l0" title="0 on 2025-11-16"></i><i class="l0" title="0 on 2025-11-17"></i><i class="l0" title="0 on 2025-11-18"></i><i class="l0" title="0 on 2025-11-19"></i><i class="l0" title="0 on 2025-11-20"></i><i class="l0" title="0 on 2025-11-21"></i><i class="l0" title="0 on 2025-11-22"></i><i class="l0" title="0 on 2025-11-23"></i><i class="l0" title="0 on 2025-11-24"></i><i class="l0" title="0 on 2025-11-25"></i><i class="l0" title="0 on 2025-11-26"></i><i class="l0" title="0 on 2025-11-27"></i><i class="l0" title="0 on 2025-11-28"></i><i class="l0" title="0 on 2025-11-29"></i><i class="l0" title="0 on 2025-11-30"></i><i class="l0" title="0 on 2025-12-01"></i><i class="l0" title="0 on 2025-12-02"></i><i class="l0" title="0 on 2025-12-03"></i><i class="l0" title="0 on 2025-12-04"></i><i class="l0" title="0 on 2025-12-05"></i><i class="l0" title="0 on 2025-12-06"></i><i class="l0" title="0 on 2025-12-07"></i><i class="l0" title="0 on 2025-12-08"></i><i class="l0" title="0 on 2025-12-09"></i><i class="l0" title="0 on 2025-12-10"></i><i class="l0" title="0 on 2025-12-11"></i><i class="l0" title="0 on 2025-12-12"></i><i class="l0" title="0 on 2025-12-13"></i><i class="l0" title="0 on 2025-12-14"></i><i class="l0" title="0 on 2025-12-15"></i><i class="l0" title="0 on 2025-12-16"></i><i class="l0" title="0 on 2025-12-17"></i><i class="l0" title="0 on 2025-12-18"></i><i class="l0" title="0 on 2025-12-19"></i><i class="l0" title="0 on 2025-12-20"></i><i class="l0" title="0 on 2025-12-21"></i><i class="l0" title="0 on 2025-12-22"></i><i class="l0" title="0 on 2025-12-23"></i><i class="l0" title="0 on 2025-12-24"></i><i class="l0" title="0 on 2025-12-25"></i><i class="l0" title="0 on 2025-12-26"></i><i class="l0" title="0 on 2025-12-27"></i><i class="l0" title="0 on 2025-12-28"></i><i class="l0" title="0 on 2025-12-29"></i><i class="l0" title="0 on 2025-12-30"></i><i class="l0" title="0 on 2025-12-31"></i><i class="l0" title="0 on 2026-01-01"></i><i class="l0" title="0 on 2026-01-02"></i><i class="l0" title="0 on 2026-01-03"></i><i class="l0" title="0 on 2026-01-04"></i><i class="l0" title="0 on 2026-01-05"></i><i class="l0" title="0 on 2026-01-06"></i><i class="l0" title="0 on 2026-01-07"></i><i class="l0" title="0 on 2026-01-08"></i><i class="l0" title="0 on 2026-01-09"></i><i class="l0" title="0 on 2026-01-10"></i><i class="l0" title="0 on 2026-01-11"></i><i class="l0" title="0 on 2026-01-12"></i><i class="l0" title="0 on 2026-01-13"></i><i class="l0" title="0 on 2026-01-14"></i><i class="l0" title="0 on 2026-01-15"></i><i class="l0" title="0 on 2026-01-16"></i><i class="l0" title="0 on 2026-01-17"></i><i class="l0" title="0 on 2026-01-18"></i><i class="l0" title="0 on 2026-01-19"></i><i class="l0" title="0 on 2026-01-20"></i><i class="l0" title="0 on 2026-01-21"></i><i class="l0" title="0 on 2026-01-22"></i><i class="l0" title="0 on 2026-01-23"></i><i class="l0" title="0 on 2026-01-24"></i><i class="l0" title="0 on 2026-01-25"></i><i class="l0" title="0 on 2026-01-26"></i><i class="l0" title="0 on 2026-01-27"></i><i class="l0" title="0 on 2026-01-28"></i><i class="l0" title="0 on 2026-01-29"></i><i class="l0" title="0 on 2026-01-30"></i><i class="l0" title="0 on 2026-01-31"></i><i class="l0" title="0 on 2026-02-01"></i><i class="l0" title="0 on 2026-02-02"></i><i class="l0" title="0 on 2026-02-03"></i><i class="l0" title="0 on 2026-02-04"></i><i class="l0" title="0 on 2026-02-05"></i><i class="l0" title="0 on 2026-02-06"></i><i class="l0" title="0 on 2026-02-07"></i><i class="l0" title="0 on 2026-02-08"></i><i class="l0" title="0 on 2026-02-09"></i><i class="l0" title="0 on 2026-02-10"></i><i class="l0" title="0 on 2026-02-11"></i><i class="l0" title="0 on 2026-02-12"></i><i class="l0" title="0 on 2026-02-13"></i><i class="l0" title="0 on 2026-02-14"></i><i class="l0" title="0 on 2026-02-15"></i><i class="l0" title="0 on 2026-02-16"></i><i class="l0" title="0 on 2026-02-17"></i><i class="l0" title="0 on 2026-02-18"></i><i class="l0" title="0 on 2026-02-19"></i><i class="l0" title="0 on 2026-02-20"></i><i class="l0" title="0 on 2026-02-21"></i><i class="l0" title="0 on 2026-02-22"></i><i class="l0" title="0 on 2026-02-23"></i><i class="l0" title="0 on 2026-02-24"></i><i class="l0" title="0 on 2026-02-25"></i><i class="l0" title="0 on 2026-02-26"></i><i class="l0" title="0 on 2026-02-27"></i><i class="l0" title="0 on 2026-02-28"></i><i class="l0" title="0 on 2026-03-01"></i><i class="l0" title="0 on 2026-03-02"></i><i class="l0" title="0 on 2026-03-03"></i><i class="l0" title="0 on 2026-03-04"></i><i class="l0" title="0 on 2026-03-05"></i><i class="l0" title="0 on 2026-03-06"></i><i class="l0" title="0 on 2026-03-07"></i><i class="l0" title="0 on 2026-03-08"></i><i class="l0" title="0 on 2026-03-09"></i><i class="l0" title="0 on 2026-03-10"></i><i class="l0" title="0 on 2026-03-11"></i><i class="l0" title="0 on 2026-03-12"></i><i class="l0" title="0 on 2026-03-13"></i><i class="l0" title="0 on 2026-03-14"></i><i class="l0" title="0 on 2026-03-15"></i><i class="l0" title="0 on 2026-03-16"></i><i class="l0" title="0 on 2026-03-17"></i><i class="l0" title="0 on 2026-03-18"></i><i class="l0" title="0 on 2026-03-19"></i><i class="l0" title="0 on 2026-03-20"></i><i class="l0" title="0 on 2026-03-21"></i><i class="l0" title="0 on 2026-03-22"></i><i class="l0" title="0 on 2026-03-23"></i><i class="l0" title="0 on 2026-03-24"></i><i class="l0" title="0 on 2026-03-25"></i><i class="l0" title="0 on 2026-03-26"></i><i class="l0" title="0 on 2026-03-27"></i><i class="l0" title="0 on 2026-03-28"></i><i class="l2" title="4 on 2026-03-29"></i><i class="l0" title="0 on 2026-03-30"></i><i class="l0" title="0 on 2026-03-31"></i><i class="l0" title="0 on 2026-04-01"></i><i class="l0" title="0 on 2026-04-02"></i><i class="l0" title="0 on 2026-04-03"></i><i class="l0" title="0 on 2026-04-04"></i><i class="l0" title="0 on 2026-04-05"></i><i class="l0" title="0 on 2026-04-06"></i><i class="l0" title="0 on 2026-04-07"></i><i class="l0" title="0 on 2026-04-08"></i><i class="l0" title="0 on 2026-04-09"></i><i class="l0" title="0 on 2026-04-10"></i><i class="l0" title="0 on 2026-04-11"></i><i class="l0" title="0 on 2026-04-12"></i><i class="l0" title="0 on 2026-04-13"></i><i class="l0" title="0 on 2026-04-14"></i><i class="l0" title="0 on 2026-04-15"></i><i class="l0" title="0 on 2026-04-16"></i><i class="l0" title="0 on 2026-04-17"></i><i class="l0" title="0 on 2026-04-18"></i><i class="l0" title="0 on 2026-04-19"></i><i class="l0" title="0 on 2026-04-20"></i><i class="l0" title="0 on 2026-04-21"></i><i class="l0" title="0 on 2026-04-22"></i><i class="l0" title="0 on 2026-04-23"></i><i class="l0" title="0 on 2026-04-24"></i><i class="l0" title="0 on 2026-04-25"></i><i class="l0" title="0 on 2026-04-26"></i><i class="l0" title="0 on 2026-04-27"></i><i class="l0" title="0 on 2026-04-28"></i><i class="l0" title="0 on 2026-04-29"></i><i class="l0" title="0 on 2026-04-30"></i><i class="l0" title="0 on 2026-05-01"></i><i class="l0" title="0 on 2026-05-02"></i><i class="l0" title="0 on 2026-05-03"></i><i class="l0" title="0 on 2026-05-04"></i><i class="l0" title="0 on 2026-05-05"></i><i class="l0" title="0 on 2026-05-06"></i><i class="l0" title="0 on 2026-05-07"></i><i class="l0" title="0 on 2026-05-08"></i><i class="l0" title="0 on 2026-05-09"></i><i class="l0" title="0 on 2026-05-10"></i><i class="l0" title="0 on 2026-05-11"></i><i class="l0" title="0 on 2026-05-12"></i><i class="l0" title="0 on 2026-05-13"></i><i class="l0" title="0 on 2026-05-14"></i><i class="l0" title="0 on 2026-05-15"></i><i class="l0" title="0 on 2026-05-16"></i><i class="l0" title="0 on 2026-05-17"></i><i class="l0" title="0 on 2026-05-18"></i><i class="l0" title="0 on 2026-05-19"></i><i class="l0" title="0 on 2026-05-20"></i><i class="l0" title="0 on 2026-05-21"></i><i class="l0" title="0 on 2026-05-22"></i><i class="l0" title="0 on 2026-05-23"></i><i class="l0" title="0 on 2026-05-24"></i><i class="l0" title="0 on 2026-05-25"></i><i class="l0" title="0 on 2026-05-26"></i><i class="l0" title="0 on 2026-05-27"></i><i class="l0" title="0 on 2026-05-28"></i><i class="l0" title="0 on 2026-05-29"></i><i class="l0" title="0 on 2026-05-30"></i><i class="l0" title="0 on 2026-05-31"></i><i class="l0" title="0 on 2026-06-01"></i><i class="l0" title="0 on 2026-06-02"></i><i class="l0" title="0 on 2026-06-03"></i><i class="l0" title="0 on 2026-06-04"></i><i class="l0" title="0 on 2026-06-05"></i><i class="l0" title="0 on 2026-06-06"></i><i class="l0" title="0 on 2026-06-07"></i><i class="l0" title="0 on 2026-06-08"></i><i class="l0" title="0 on 2026-06-09"></i><i class="l0" title="0 on 2026-06-10"></i><i class="l0" title="0 on 2026-06-11"></i><i class="l0" title="0 on 2026-06-12"></i><i class="l0" title="0 on 2026-06-13"></i><i class="l0" title="0 on 2026-06-14"></i><i class="l0" title="0 on 2026-06-15"></i><i class="l0" title="0 on 2026-06-16"></i><i class="l0" title="0 on 2026-06-17"></i><i class="l0" title="0 on 2026-06-18"></i><i class="l0" title="0 on 2026-06-19"></i><i class="l0" title="0 on 2026-06-20"></i><i class="l0" title="0 on 2026-06-21"></i><i class="l0" title="0 on 2026-06-22"></i><i class="l0" title="0 on 2026-06-23"></i><i class="l0" title="0 on 2026-06-24"></i><i class="l0" title="0 on 2026-06-25"></i><i class="l0" title="0 on 2026-06-26"></i><i class="l0" title="0 on 2026-06-27"></i><i class="l0" title="0 on 2026-06-28"></i><i class="l0" title="0 on 2026-06-29"></i><i class="l0" title="0 on 2026-06-30"></i><i class="l0" title="0 on 2026-07-01"></i><i class="l0" title="0 on 2026-07-02"></i><i class="l0" title="0 on 2026-07-03"></i><i class="l0" title="0 on 2026-07-04"></i><i class="l0" title="0 on 2026-07-05"></i><i class="l0" title="0 on 2026-07-06"></i><i class="l0" title="0 on 2026-07-07"></i><i class="l0" title="0 on 2026-07-08"></i><i class="l0" title="0 on 2026-07-09"></i><i class="l0" title="0 on 2026-07-10"></i><i class="l0" title="0 on 2026-07-11"></i><i class="l0" title="0 on 2026-07-12"></i><i class="l0" title="0 on 2026-07-13"></i><i class="l0" title="0 on 2026-07-14"></i><i class="l0" title="0 on 2026-07-15"></i><i class="l0" title="0 on 2026-07-16"></i><i class="l0" title="0 on 2026-07-17"></i><i class="l0" title="0 on 2026-07-18"></i><i class="l0" title="0 on 2026-07-19"></i><i class="l0" title="0 on 2026-07-20"></i><i class="l0" title="0 on 2026-07-21"></i><i class="l0" title="0 on 2026-07-22"></i><i class="l0" title="0 on 2026-07-23"></i><i class="l0" title="0 on 2026-07-24"></i><i class="l0" title="0 on 2026-07-25"></i><i class="l0" title="0 on 2026-07-26"></i><i class="l0" title="0 on 2026-07-27"></i><i class="l0" title="0 on 2026-07-28"></i><i class="l0" title="0 on 2026-07-29"></i><i class="l0" title="0 on 2026-07-30"></i><i class="l0" title="0 on 2026-07-31"></i><i class="l0" title="0 on 2026-08-01"></i><i class="l0" title="0 on 2026-08-02"></i><i class="l0" title="0 on 2026-08-03"></i><i class="l0" title="0 on 2026-08-04"></i><i class="l0" title="0 on 2026-08-05"></i><i class="l0" title="0 on 2026-08-06"></i><i class="l0" title="0 on 2026-08-07"></i><i class="l0" title="0 on 2026-08-08"></i><i class="l0" title="0 on 2026-08-09"></i><i class="l0" title="0 on 2026-08-10"></i><i class="l0" title="0 on 2026-08-11"></i><i class="l0" title="0 on 2026-08-12"></i><i class="l4" title="34 on 2026-08-13"></i><i class="l4" title="90 on 2026-08-14"></i><i class="l4" title="58 on 2026-08-15"></i><i class="l4" title="28 on 2026-08-16"></i><i class="l0" title="0 on 2026-08-17"></i><i class="l2" title="3 on 2026-08-18"></i><i class="l2" title="5 on 2026-08-19"></i><i class="l2" title="5 on 2026-08-20"></i><i class="l0" title="0 on 2026-08-21"></i><i class="l1" title="1 on 2026-08-22"></i><i class="l2" title="3 on 2026-08-23"></i><i class="l4" title="28 on 2026-08-24"></i><i class="l0" title="0 on 2026-08-25"></i><i class="l4" title="36 on 2026-08-26"></i><i class="l4" title="247 on 2026-08-27"></i><i class="l4" title="161 on 2026-08-28"></i><i class="l4" title="307 on 2026-08-29"></i><i class="l0" title="0 on 2026-08-30"></i><i class="l0" title="0 on 2026-08-31"></i><i class="l4" title="71 on 2026-09-01"></i><i class="l4" title="79 on 2026-09-02"></i><i class="l1" title="1 on 2026-09-03"></i><i class="l0" title="0 on 2026-09-04"></i><i class="l0" title="0 on 2026-09-05"></i><i class="l0" title="0 on 2026-09-06"></i><i class="l0" title="0 on 2026-09-07"></i><i class="l0" title="0 on 2026-09-08"></i><i class="l0" title="0 on 2026-09-09"></i><i class="l4" title="65 on 2026-09-10"></i><i class="l1" title="2 on 2026-09-11"></i><i class="l0" title="0 on 2026-09-12"></i><i class="l4" title="66 on 2026-09-13"></i><i class="l0" title="0 on 2026-09-14"></i><i class="l0" title="0 on 2026-09-15"></i><i class="l0" title="0 on 2026-09-16"></i><i class="l4" title="11 on 2026-09-17"></i><i class="l0" title="0 on 2026-09-18"></i><i class="l2" title="5 on 2026-09-19"></i><i class="l1" title="1 on 2026-09-20"></i><i class="l3" title="8 on 2026-09-21"></i><i class="l0" title="0 on 2026-09-22"></i><i class="l2" title="4 on 2026-09-23"></i><i class="l4" title="11 on 2026-09-24"></i><i class="l2" title="3 on 2026-09-25"></i><i class="l4" title="19 on 2026-09-26"></i><i class="l4" title="145 on 2026-09-27"></i><i class="l4" title="88 on 2026-09-28"></i><i class="l0" title="0 on 2026-09-29"></i><i class="l4" title="14 on 2026-09-30"></i><i class="l4" title="31 on 2026-10-01"></i><i class="l4" title="296 on 2026-10-02"></i><i class="l0" title="0 on 2026-10-03"></i><i class="l3" title="6 on 2026-10-04"></i><i class="l0" title="0 on 2026-10-05"></i><i class="l1" title="1 on 2026-10-06"></i><i class="l1" title="1 on 2026-10-07"></i><i class="l0" title="0 on 2026-10-08"></i></div>
+  <div class="legend"><span>1,938 contributions on GitHub in the last year, as of 8 October 2026.</span><span class="scale">Less <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> More</span></div>
+</section>
+
+<h2>Tools I use</h2>
+<p class="tools">Almost everything here is <span class="tool"><img src="https://skillicons.dev/icons?i=py" alt="" width="16" height="16">Python</span> with <span class="tool"><img src="https://skillicons.dev/icons?i=pytorch" alt="" width="16" height="16">PyTorch</span>, and <span class="tool"><img src="https://skillicons.dev/icons?i=cpp" alt="" width="16" height="16">C++</span> when a kernel or a simulation needs it. Tabular work is <span class="tool"><img src="https://skillicons.dev/icons?i=sklearn" alt="" width="16" height="16">scikit-learn</span> and LightGBM, language models go through Transformers, PEFT and <span class="tool"><img src="https://skillicons.dev/icons?i=docker" alt="" width="16" height="16">Docker</span> for deployment, with <span class="tool"><img src="https://skillicons.dev/icons?i=fastapi" alt="" width="16" height="16">FastAPI</span> or <span class="tool"><img src="https://skillicons.dev/icons?i=streamlit" alt="" width="16" height="16">Streamlit</span> in front and <span class="tool"><img src="https://skillicons.dev/icons?i=postgres" alt="" width="16" height="16">PostgreSQL</span> behind. Every repo runs on <span class="tool"><img src="https://skillicons.dev/icons?i=githubactions" alt="" width="16" height="16">GitHub Actions</span> and re-derives its own numbers. On the hardware side I use <span class="tool"><img src="https://skillicons.dev/icons?i=raspberrypi" alt="" width="16" height="16">Raspberry Pi</span> and <span class="tool"><img src="https://skillicons.dev/icons?i=arduino" alt="" width="16" height="16">Arduino</span>, and for local models Ollama and MLX on Apple Silicon.</p>
+
+<h2 id="experience">Story so far</h2>
+<ul class="tl">
+  <li class="now"><div class="org">Adscreen</div><h3>Head of IT</h3><span class="when">June 2024 to present, Kortrijk, Belgium</span>
+    <p>Real-time ad targeting pipelines in Python and TensorFlow across a fleet of over 1,000 edge devices. Containerised deployments with Docker and Kubernetes, with monitoring and automated recovery for the computer vision analytics service.</p></li>
+  <li><div class="org">Howest</div><h3>AI developer and student researcher</h3><span class="when">September 2024 to June 2025, Kortrijk</span>
+    <p>Predictive models and transformer NLP pipelines for industry partner projects. Computer vision with CNNs, YOLO and OpenCV, C++ simulation modules, and cross-validation protocols so partner results were reproducible.</p></li>
+  <li><div class="org">STEP IT Academy</div><h3>Programming instructor</h3><span class="when">April 2019 to December 2023, Baku</span>
+    <p>Taught programming and AI to over 200 students and supervised capstone projects from preprocessing to deployment. Built microcontroller prototypes with embedded ML models that became reference coursework.</p></li>
+  <li><div class="org">RED RUSH and ARENA FEST</div><h3>Founder and team lead</h3><span class="when">2024, Baku</span>
+    <p>Founded two events, then moved to a remote advisory role. Led over 30 volunteers at Red Bull F1 and Cars and Coffee events.</p></li>
+</ul>
+
+<h2>Education</h2>
+<ul class="tl">
+  <li class="now"><div class="org">Howest University of Applied Sciences</div><h3>Bachelor, Creative Technologies and AI</h3><span class="when">Expected 2027, Kortrijk</span>
+    <p>Advanced deep learning, computer vision, reinforcement learning, MLOps and AI ethics.</p></li>
+  <li><div class="org">STEP IT Academy Azerbaijan</div><h3>Diploma, programming and IT</h3><span class="when">2017 to 2023, Baku</span></li>
+  <li><div class="org">International STEM Olympiad</div><h3>Gold medal, mathematics</h3><span class="when">2022</span></li>
+  <li><div class="org">Kaggle</div><h3>IEEE-CIS Fraud Detection, 0.9086 private AUC</h3><span class="when">Time-ordered folds with a 30-day embargo, so validation never sees the future</span></li>
+</ul>
+
+<h2 id="work">Curious? Check out my projects. <button class="see" type="button" id="see-all">See all</button></h2>
 <div class="filters">
   <input type="search" id="q" placeholder="Filter projects, e.g. diffusion, RL, hallucination" aria-label="Filter projects">
-  <button class="chip on" type="button" aria-pressed="true" data-f="all">All</button>
-  <button class="chip" type="button" aria-pressed="false" data-f="scratch">From scratch</button>
-  <button class="chip" type="button" aria-pressed="false" data-f="eval">Evaluation</button>
-  <button class="chip" type="button" aria-pressed="false" data-f="tools">Tools</button>
-  <button class="chip" type="button" aria-pressed="false" data-f="demo">Live demo</button>
+  <button class="chip on" type="button" data-f="all" aria-pressed="true">All</button>
+  <button class="chip" type="button" data-f="scratch" aria-pressed="false">From scratch</button>
+  <button class="chip" type="button" data-f="eval" aria-pressed="false">Evaluation</button>
+  <button class="chip" type="button" data-f="tools" aria-pressed="false">Tools</button>
+  <button class="chip" type="button" data-f="demo" aria-pressed="false">Live demo</button>
 </div>
 <div id="cards">
-
-<div class="card" data-f="scratch" data-repo="latent-diffusion-from-scratch" data-doi="10.5281/zenodo.23003654">
-  <h3><a href="https://github.com/aghasalim/latent-diffusion-from-scratch">latent-diffusion-from-scratch</a></h3>
-  <p>Autoencoder, DDPM and DDIM. Diffusion in a 4x compressed latent trains 5.3x faster than the pixel baseline and scores 6.2x better at matched steps.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003654">DOI 10.5281/zenodo.23003654</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="rlhf-ppo-from-scratch" data-doi="10.5281/zenodo.23003676">
-  <h3><a href="https://github.com/aghasalim/rlhf-ppo-from-scratch">rlhf-ppo-from-scratch</a></h3>
-  <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward climbs to +9.97 while the true objective peaks and then collapses to -1.43, below the policy it started from.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003676">DOI 10.5281/zenodo.23003676</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="rectified-flow-from-scratch" data-doi="10.5281/zenodo.23003668">
-  <h3><a href="https://github.com/aghasalim/rectified-flow-from-scratch">rectified-flow-from-scratch</a></h3>
-  <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric by 15000x and buys single-step sampling at 128x less compute for no measurable loss.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003668">DOI 10.5281/zenodo.23003668</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="flash-attention-from-scratch" data-doi="10.5281/zenodo.23003627">
-  <h3><a href="https://github.com/aghasalim/flash-attention-from-scratch">flash-attention-from-scratch</a></h3>
-  <p>IO-aware attention, with every speedup measured on my own hardware. Kernel fusion is worth about 3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003627">DOI 10.5281/zenodo.23003627</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="schrodinger-bridge-from-scratch" data-doi="10.5281/zenodo.23003678">
-  <h3><a href="https://github.com/aghasalim/schrodinger-bridge-from-scratch">schrodinger-bridge-from-scratch</a></h3>
-  <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching. Bridge matching wins by 1.3x to 12x at a quarter the cost.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003678">DOI 10.5281/zenodo.23003678</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="mla-from-scratch" data-doi="10.5281/zenodo.23003662">
-  <h3><a href="https://github.com/aghasalim/mla-from-scratch">mla-from-scratch</a></h3>
-  <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference verified equal to the naive form to 6e-07. A 14.2x KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003662">DOI 10.5281/zenodo.23003662</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="world-model-from-scratch" data-doi="10.5281/zenodo.23003689">
-  <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
-  <p>An RSSM and an actor critic trained entirely in imagination, on a pendulum where velocity is hidden. At 57,600 steps no world model beats a random policy. Given the same 384,000 steps as the model-free baseline, all three beat it, the best seed reaching -20.51 against -35.08, at about 60 times the compute.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003689">DOI 10.5281/zenodo.23003689</a></div>
-</div>
-<div class="card" data-f="scratch" data-repo="vla-from-scratch" data-doi="10.5281/zenodo.23003685">
-  <h3><a href="https://github.com/aghasalim/vla-from-scratch">vla-from-scratch</a></h3>
-  <p>Four ways a robot policy can emit a continuous action, on demonstrations that route around an obstacle either way. A regression head learns the average of the two and spends 8.44 of 24 steps pressed into the wall, against 3.56 for a flow matching head running at 90x the control rate of a diffusion one.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003685">DOI 10.5281/zenodo.23003685</a></div>
-</div>
-
-<div class="card" data-f="eval tools" data-repo="model-nerf-watch">
-  <h3><a href="https://github.com/aghasalim/model-nerf-watch">model-nerf-watch</a></h3>
-  <p>Is my model quietly getting worse? A daily canary with confidence intervals instead of vibes. Three runs of the same local model land on 90.0% every time, so the noise floor is a 6.4 point interval, not observed drift. That means 60 probes can see a 20 point drop and cannot see a 5 point one, and the README says how many probes you would need. A planted downgrade to a model half the size is caught at p of 1e-08, and the first attempt showed why a token budget change looks exactly like a nerf.</p>
-  <div class="meta"></div>
-</div>
-<div class="card" data-f="eval" data-repo="offline-live-captions">
-  <h3><a href="https://github.com/aghasalim/offline-live-captions">offline-live-captions</a></h3>
-  <p>Live captions for deaf and hard of hearing people that never touch the network, with the accuracy nobody publishes. On an M4, whisper turbo reaches 5.1% word error rate on clean speech and 11.0% in a simulated noisy room, with captions 1.7 seconds after you stop talking. The tiny model goes past 100% error at the loudest noise level because it invents words that were never said. On Indian and South Asian accents turbo gets 12.9% against 35.2% for tiny. A test asserts no socket opens except localhost, so the privacy claim is checkable.</p>
-  <div class="meta"></div>
-</div>
-<div class="card" data-f="eval" data-repo="one-answer-vision">
-  <h3><a href="https://github.com/aghasalim/one-answer-vision">one-answer-vision</a></h3>
-  <p>For blind users: point the camera, ask one question, get the value and nothing else, offline on a 4B vision model. On 156 labelled images a terse prompt scores 68% against 62% for the usual describe-everything prompt, and puts zero words before the answer instead of a median of 12. Dials and 7-segment readouts stay bad in every regime, 27% and 19% at best, and the write-up says so. Test images are synthetic, which is the next thing to fix.</p>
-  <div class="meta"></div>
-</div>
-<div class="card" data-f="eval" data-repo="spurious-ad" data-doi="10.5281/zenodo.23003682">
-  <h3><a href="https://github.com/aghasalim/spurious-ad">spurious-ad</a></h3>
-  <p>A planted-confound benchmark for unsupervised anomaly detection that refutes its own premise. AUROC rises to 0.998 while heatmap peaks on the real defect fall from 0.75 to 0.37, a 4.2x effect. Pinning the training confound rate removes it entirely, so it was never a label shortcut. Replicated on real MVTec images across two detectors and two backbones.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003682">DOI 10.5281/zenodo.23003682</a></div>
-</div>
-<div class="card" data-f="eval demo" data-repo="vlm-hallucination-eval" data-doi="10.5281/zenodo.23003687">
-  <h3><a href="https://github.com/aghasalim/vlm-hallucination-eval">vlm-hallucination-eval</a></h3>
-  <p>Object hallucination measured against a hand-verified adversarial set. Accuracy barely moves with phrasing but the hallucination rate more than doubles, 6.0% to 13.4%, when the object is smuggled into the premise. A CLIP verifier cuts it by 25 to 40% relative and costs recall. <a href="https://vlm-hallucination-eval.streamlit.app/">Live demo</a>.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003687">DOI 10.5281/zenodo.23003687</a></div>
-</div>
-<div class="card" data-f="eval" data-repo="lora-forgetting" data-doi="10.5281/zenodo.23003658">
-  <h3><a href="https://github.com/aghasalim/lora-forgetting">lora-forgetting</a></h3>
-  <p>LoRA on Qwen2.5-1.5B for expense extraction, then rerun 15 times on rented GPUs. Exact match rises from 48.9% to between 66.7% and 82.2% depending on the seed, and one epoch does as well as three. Written-out amounts get worse in 11 of 15 runs. Two ARC scoring protocols disagree by 16.7 points on the same model.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003658">DOI 10.5281/zenodo.23003658</a></div>
-</div>
-<div class="card" data-f="eval demo" data-repo="rl-arm-reward-shaping" data-doi="10.5281/zenodo.23003674">
-  <h3><a href="https://github.com/aghasalim/rl-arm-reward-shaping">rl-arm-reward-shaping</a></h3>
-  <p>A 2-link arm, six reward functions, two exploited outright. The distance reward taught the agent to crash on purpose in 200 of 200 episodes. Final PPO agent 43.2% success against 73.5% for a PD controller, but 17.3% collisions against 25.5%. Rewards replayed in seven languages by CI. <a href="https://rl-arm-reward-shaping.streamlit.app/">Live demo</a>.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003674">DOI 10.5281/zenodo.23003674</a></div>
-</div>
-<div class="card" data-f="eval" data-repo="gemma4-code-graph-localization">
-  <h3><a href="https://github.com/aghasalim/gemma4-code-graph-localization">gemma4-code-graph-localization</a></h3>
-  <p>Do the code search tools in Google's Gemma 4 agent competition on Kaggle point at the code a fix changes? Measured on the 129 training tasks with no model in the loop, the harness's embedding search puts an edited file in its top five for 37 of 128 tasks, plain grep for 52, and BM25 with test code filtered out for 82. The audit also found the released graph leaves out almost every async function. Submitted to the competition's paper track.</p>
-  <div class="meta"><span class="k">Competition write-up, submitted</span> <a href="https://www.kaggle.com/competitions/gemma-4-developer-agent-paper/writeups/does-the-code-graph-find-the-bug">Read on Kaggle</a></div>
-</div>
-<div class="card" data-f="eval" data-repo="enas-microcontroller" data-doi="10.5281/zenodo.23003622">
-  <h3><a href="https://github.com/aghasalim/enas-microcontroller">enas-microcontroller</a></h3>
-  <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices. Fully trained, the winner reaches 76.4% on held out CIFAR-10 against 71.8% for the hand-written baseline, on 3 of 3 seeds, and 33 random draws found nothing better than the baseline. Exported to C, it matches PyTorch to 3.2e-06.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003622">DOI 10.5281/zenodo.23003622</a></div>
-</div>
-
-<div class="card" data-f="tools demo" data-repo="groundedness" data-doi="10.5281/zenodo.23003649">
-  <h3><a href="https://github.com/aghasalim/groundedness">groundedness</a></h3>
-  <p>Claim-level hallucination check for RAG answers in any language, <code>pip install groundedness</code>. Includes my own XLM-RoBERTa detector trained on 30 languages, served from a Raspberry Pi 5 in Baku and published on <a href="https://huggingface.co/aghasalim/grounded-multilingual-base">Hugging Face</a>, with the <a href="https://doi.org/10.2139/ssrn.7497398">paper on SSRN</a>. On 434 cases across 31 languages it catches 352 of 372 planted errors, against 265 for Vectara HHEM. <a href="https://grounded.siba.az">Live</a>.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003649">DOI 10.5281/zenodo.23003649</a></div>
-</div>
-<div class="card" data-f="tools" data-repo="siba-meristem">
-  <h3><a href="https://huggingface.co/aghasalim/siba-meristem-1.0">siba-meristem-1.0</a></h3>
-  <p>Qwen2.5-3B fine-tuned with QLoRA on 167,785 instruction pairs in Azerbaijani, Russian, English and Turkish. Shipped as a 1.9 GB GGUF, so it runs locally with <code>ollama run aghasalim/siba-meristem-1.0</code>. On <a href="https://huggingface.co/aghasalim/siba-meristem-1.0">Hugging Face</a> and <a href="https://ollama.com/aghasalim/siba-meristem-1.0">Ollama</a>.</p>
-  <div class="meta"><span class="k">Model</span> 3B parameters</div>
-</div>
-<div class="card" data-f="tools" data-repo="azbench" data-doi="10.5281/zenodo.23003616">
-  <h3><a href="https://github.com/aghasalim/azbench">azbench</a></h3>
-  <p>An Azerbaijani LLM benchmark of 2,148 questions, published as a <a href="https://huggingface.co/datasets/aghasalim/azbench">Hugging Face dataset</a>. My SIBA Meristem 1.0.1 fine-tune scores 40.0% on exam questions against 36.9% for its base model, but loses 6.3 points on reading comprehension, and on TUMLU neither beats always answering D.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003616">DOI 10.5281/zenodo.23003616</a></div>
-</div>
-<div class="card" data-f="tools" data-repo="groundcheck-mcp" data-doi="10.5281/zenodo.23003639">
-  <h3><a href="https://github.com/aghasalim/groundcheck-mcp">groundcheck-mcp</a></h3>
-  <p>An MCP connector that checks whether a claim is actually grounded, a real quote, a real citation, real code output, with no second language model doing the judging. Works with Claude and Gemini.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003639">DOI 10.5281/zenodo.23003639</a></div>
-</div>
-<div class="card" data-f="tools" data-repo="eu-ai-act-rag" data-doi="10.5281/zenodo.23003624">
-  <h3><a href="https://github.com/aghasalim/eu-ai-act-rag">eu-ai-act-rag</a></h3>
-  <p>Retrieval over Regulation (EU) 2024/1689, graded by a model that is not the one answering. 90.9% hit rate at 6 and 90.2% faithful on 45 hand-written questions.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003624">DOI 10.5281/zenodo.23003624</a></div>
-</div>
-<div class="card" data-f="tools" data-repo="ieee-fraud-ml" data-doi="10.5281/zenodo.23003651">
-  <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
-  <p>IEEE-CIS fraud detection validated in time order, since a shuffled split leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard.</p>
-  <div class="meta"><a href="https://doi.org/10.5281/zenodo.23003651">DOI 10.5281/zenodo.23003651</a></div>
-</div>
+<article class="card" data-f="scratch" data-repo="latent-diffusion-from-scratch" data-doi="10.5281/zenodo.23003654">
+  <a class="shot" href="https://github.com/aghasalim/latent-diffusion-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/latent-diffusion-from-scratch/main/results/cost-breakdown.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/latent-diffusion-from-scratch">latent-diffusion-from-scratch</a></h3>
+    <p>Autoencoder, DDPM and DDIM. Diffusion in a 4x compressed latent trains 5.3x faster than the pixel baseline and scores 6.2x better at matched steps.</p>
+    <div class="stack"><span>autoencoder</span><span>ddim</span><span>ddpm</span><span>diffusion-models</span><span>generative-models</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/latent-diffusion-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003654">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card" data-f="scratch" data-repo="rlhf-ppo-from-scratch" data-doi="10.5281/zenodo.23003676">
+  <a class="shot" href="https://github.com/aghasalim/rlhf-ppo-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rlhf-ppo-from-scratch/main/results/goodhart.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/rlhf-ppo-from-scratch">rlhf-ppo-from-scratch</a></h3>
+    <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward climbs to +9.97 while the true objective peaks and then collapses to -1.43, below the policy it started from.</p>
+    <div class="stack"><span>alignment</span><span>dpo</span><span>goodharts-law</span><span>grpo</span><span>llm</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/rlhf-ppo-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003676">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card" data-f="scratch" data-repo="rectified-flow-from-scratch" data-doi="10.5281/zenodo.23003668">
+  <a class="shot" href="https://github.com/aghasalim/rectified-flow-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/animation-8gaussians.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/rectified-flow-from-scratch">rectified-flow-from-scratch</a></h3>
+    <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric by 15000x and buys single-step sampling at 128x less compute for no measurable loss.</p>
+    <div class="stack"><span>diffusion-models</span><span>flow-matching</span><span>generative-models</span><span>ode-solvers</span><span>pytorch</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/rectified-flow-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003668">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card" data-f="scratch" data-repo="flash-attention-from-scratch" data-doi="10.5281/zenodo.23003627">
+  <a class="shot" href="https://github.com/aghasalim/flash-attention-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/flash-attention-from-scratch/main/results/accumulator.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/flash-attention-from-scratch">flash-attention-from-scratch</a></h3>
+    <p>IO-aware attention, with every speedup measured on my own hardware. Kernel fusion is worth about 3x and lifts achieved throughput from 22% of peak to roughly 67%.</p>
+    <div class="stack"><span>attention</span><span>cuda</span><span>flash-attention</span><span>gpu-kernels</span><span>performance-optimization</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/flash-attention-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003627">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card" data-f="scratch" data-repo="schrodinger-bridge-from-scratch" data-doi="10.5281/zenodo.23003678">
+  <a class="shot" href="https://github.com/aghasalim/schrodinger-bridge-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/schrodinger-bridge-from-scratch/main/results/animation-8gaussians.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/schrodinger-bridge-from-scratch">schrodinger-bridge-from-scratch</a></h3>
+    <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching. Bridge matching wins by 1.3x to 12x at a quarter the cost.</p>
+    <div class="stack"><span>bridge-matching</span><span>diffusion-models</span><span>entropic-optimal-transport</span><span>generative-models</span><span>optimal-transport</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/schrodinger-bridge-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003678">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card" data-f="scratch" data-repo="mla-from-scratch" data-doi="10.5281/zenodo.23003662">
+  <a class="shot" href="https://github.com/aghasalim/mla-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/mla-from-scratch/main/results/cache-growth.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/mla-from-scratch">mla-from-scratch</a></h3>
+    <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference verified equal to the naive form to 6e-07. A 14.2x KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
+    <div class="stack"><span>attention</span><span>deepseek</span><span>inference-optimization</span><span>kv-cache</span><span>llm</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/mla-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003662">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="scratch" data-repo="world-model-from-scratch" data-doi="10.5281/zenodo.23003689">
+  <a class="shot" href="https://github.com/aghasalim/world-model-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/world-model-from-scratch/main/results/dream-vs-real.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
+    <p>An RSSM and an actor critic trained entirely in imagination, on a pendulum where velocity is hidden. At 57,600 steps no world model beats a random policy. Given the same 384,000 steps as the model-free baseline, all three beat it, the best seed reaching -20.51 against -35.08, at about 60 times the compute.</p>
+    <div class="stack"><span>dreamer</span><span>imagination</span><span>model-based-rl</span><span>pomdp</span><span>pytorch</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/world-model-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003689">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="scratch" data-repo="vla-from-scratch" data-doi="10.5281/zenodo.23003685">
+  <a class="shot" href="https://github.com/aghasalim/vla-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/vla-from-scratch/main/results/generalisation.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/vla-from-scratch">vla-from-scratch</a></h3>
+    <p>Four ways a robot policy can emit a continuous action, on demonstrations that route around an obstacle either way. A regression head learns the average of the two and spends 8.44 of 24 steps pressed into the wall, against 3.56 for a flow matching head running at 90x the control rate of a diffusion one.</p>
+    <div class="stack"><span>action-chunking</span><span>diffusion-policy</span><span>flow-matching</span><span>imitation-learning</span><span>pytorch</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/vla-from-scratch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003685">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval tools" data-repo="model-nerf-watch">
+  <a class="shot" href="https://github.com/aghasalim/model-nerf-watch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/model-nerf-watch/main/results/drift.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/model-nerf-watch">model-nerf-watch</a></h3>
+    <p>Is my model quietly getting worse? A daily canary with confidence intervals instead of vibes. Three runs of the same local model land on 90.0% every time, so the noise floor is a 6.4 point interval, not observed drift. That means 60 probes can see a 20 point drop and cannot see a 5 point one, and the README says how many probes you would need. A planted downgrade to a model half the size is caught at p of 1e-08, and the first attempt showed why a token budget change looks exactly like a nerf.</p>
+    <div class="stack"><span>benchmarking</span><span>llm-evaluation</span><span>model-drift</span><span>ollama</span><span>statistics</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/model-nerf-watch"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="offline-live-captions">
+  <a class="shot" href="https://github.com/aghasalim/offline-live-captions" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/offline-live-captions/main/results/latency_vs_chunk.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/offline-live-captions">offline-live-captions</a></h3>
+    <p>Live captions for deaf and hard of hearing people that never touch the network, with the accuracy nobody publishes. On an M4, whisper turbo reaches 5.1% word error rate on clean speech and 11.0% in a simulated noisy room, with captions 1.7 seconds after you stop talking. The tiny model goes past 100% error at the loudest noise level because it invents words that were never said. On Indian and South Asian accents turbo gets 12.9% against 35.2% for tiny. A test asserts no socket opens except localhost, so the privacy claim is checkable.</p>
+    <div class="stack"><span>accessibility</span><span>deaf</span><span>hard-of-hearing</span><span>mlx</span><span>on-device</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/offline-live-captions"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="one-answer-vision">
+  <a class="shot" href="https://github.com/aghasalim/one-answer-vision" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/one-answer-vision/main/results/accuracy_per_category.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/one-answer-vision">one-answer-vision</a></h3>
+    <p>For blind users: point the camera, ask one question, get the value and nothing else, offline on a 4B vision model. On 156 labelled images a terse prompt scores 68% against 62% for the usual describe-everything prompt, and puts zero words before the answer instead of a median of 12. Dials and 7-segment readouts stay bad in every regime, 27% and 19% at best, and the write-up says so. Test images are synthetic, which is the next thing to fix.</p>
+    <div class="stack"><span>accessibility</span><span>blind</span><span>computer-vision</span><span>low-vision</span><span>ollama</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/one-answer-vision"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="spurious-ad" data-doi="10.5281/zenodo.23003682">
+  <a class="shot" href="https://github.com/aghasalim/spurious-ad" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/spurious-ad/main/reports/figures/attribution.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/spurious-ad">spurious-ad</a></h3>
+    <p>A planted-confound benchmark for unsupervised anomaly detection that refutes its own premise. AUROC rises to 0.998 while heatmap peaks on the real defect fall from 0.75 to 0.37, a 4.2x effect. Pinning the training confound rate removes it entirely, so it was never a label shortcut. Replicated on real MVTec images across two detectors and two backbones.</p>
+    <div class="stack"><span>anomaly-detection</span><span>computer-vision</span><span>explainable-ai</span><span>model-evaluation</span><span>pytorch</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/spurious-ad"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003682">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval demo" data-repo="vlm-hallucination-eval" data-doi="10.5281/zenodo.23003687">
+  <a class="shot" href="https://github.com/aghasalim/vlm-hallucination-eval" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/vlm-hallucination-eval/main/reports/figures/probe-breakdown.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/vlm-hallucination-eval">vlm-hallucination-eval</a></h3>
+    <p>Object hallucination measured against a hand-verified adversarial set. Accuracy barely moves with phrasing but the hallucination rate more than doubles, 6.0% to 13.4%, when the object is smuggled into the premise. A CLIP verifier cuts it by 25 to 40% relative and costs recall.</p>
+    <div class="stack"><span>blip</span><span>clip</span><span>hallucination-detection</span><span>model-evaluation</span><span>multimodal</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/vlm-hallucination-eval"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://vlm-hallucination-eval.streamlit.app/"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2.5 2.5 2.5 10.5 0 13M8 1.5c-2.5 2.5-2.5 10.5 0 13"/></svg>Live</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003687">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="lora-forgetting" data-doi="10.5281/zenodo.23003658">
+  <a class="shot" href="https://github.com/aghasalim/lora-forgetting" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/lora-forgetting/main/reports/figures/arc-protocol.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/lora-forgetting">lora-forgetting</a></h3>
+    <p>LoRA on Qwen2.5-1.5B for expense extraction, then rerun 15 times on rented GPUs. Exact match rises from 48.9% to between 66.7% and 82.2% depending on the seed, and one epoch does as well as three. Written-out amounts get worse in 11 of 15 runs. Two ARC scoring protocols disagree by 16.7 points on the same model.</p>
+    <div class="stack"><span>catastrophic-forgetting</span><span>fine-tuning</span><span>information-extraction</span><span>llm</span><span>lora</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/lora-forgetting"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003658">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval demo" data-repo="rl-arm-reward-shaping" data-doi="10.5281/zenodo.23003674">
+  <a class="shot" href="https://github.com/aghasalim/rl-arm-reward-shaping" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rl-arm-reward-shaping/main/reports/figures/final_early.gif" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/rl-arm-reward-shaping">rl-arm-reward-shaping</a></h3>
+    <p>A 2-link arm, six reward functions, two exploited outright. The distance reward taught the agent to crash on purpose in 200 of 200 episodes. Final PPO agent 43.2% success against 73.5% for a PD controller, but 17.3% collisions against 25.5%. Rewards replayed in seven languages by CI.</p>
+    <div class="stack"><span>gymnasium</span><span>ppo</span><span>reinforcement-learning</span><span>reward-hacking</span><span>reward-shaping</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/rl-arm-reward-shaping"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://rl-arm-reward-shaping.streamlit.app/"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2.5 2.5 2.5 10.5 0 13M8 1.5c-2.5 2.5-2.5 10.5 0 13"/></svg>Live</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003674">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="gemma4-code-graph-localization">
+  <a class="shot noimg" href="https://github.com/aghasalim/gemma4-code-graph-localization" tabindex="-1" aria-hidden="true"><span>gemma4</span></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/gemma4-code-graph-localization">gemma4-code-graph-localization</a></h3>
+    <p>Do the code search tools in Google's Gemma 4 agent competition on Kaggle point at the code a fix changes? Measured on the 129 training tasks with no model in the loop, the harness's embedding search puts an edited file in its top five for 37 of 128 tasks, plain grep for 52, and BM25 with test code filtered out for 82. The audit also found the released graph leaves out almost every async function. Submitted to the competition's paper track.</p>
+    <div class="stack"><span>gemma-4</span><span>code-graph</span><span>bug-localization</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/gemma4-code-graph-localization"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="eval" data-repo="enas-microcontroller" data-doi="10.5281/zenodo.23003622">
+  <a class="shot" href="https://github.com/aghasalim/enas-microcontroller" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/enas-microcontroller/main/results/figures/budget.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/enas-microcontroller">enas-microcontroller</a></h3>
+    <p>Evolutionary architecture search under a hard 50k parameter, 250 KB int8 budget for Cortex-M devices. Fully trained, the winner reaches 76.4% on held out CIFAR-10 against 71.8% for the hand-written baseline, on 3 of 3 seeds, and 33 random draws found nothing better than the baseline. Exported to C, it matches PyTorch to 3.2e-06.</p>
+    <div class="stack"><span>neural-architecture-search</span><span>microcontroller</span><span>cifar-10</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/enas-microcontroller"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003622">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools demo" data-repo="groundedness" data-doi="10.5281/zenodo.23003649">
+  <a class="shot noimg" href="https://github.com/aghasalim/groundedness" tabindex="-1" aria-hidden="true"><span>groundedness</span></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/groundedness">groundedness</a></h3>
+    <p>Claim-level hallucination check for RAG answers in any language, <code>pip install groundedness</code>. Includes my own XLM-RoBERTa detector trained on 30 languages, served from a Raspberry Pi 5 in Baku and published on <a href="https://huggingface.co/aghasalim/grounded-multilingual-base">Hugging Face</a>, with the <a href="https://doi.org/10.2139/ssrn.7497398">paper on SSRN</a>. On 434 cases across 31 languages it catches 352 of 372 planted errors, against 265 for Vectara HHEM.</p>
+    <div class="stack"><span>hallucination-detection</span><span>rag</span><span>multilingual</span><span>xlm-roberta</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/groundedness"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://grounded.siba.az"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2.5 2.5 2.5 10.5 0 13M8 1.5c-2.5 2.5-2.5 10.5 0 13"/></svg>Live</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003649">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools" data-repo="siba-meristem">
+  <a class="shot noimg" href="https://huggingface.co/aghasalim/siba-meristem-1.0" tabindex="-1" aria-hidden="true"><span>siba</span></a>
+  <div class="body">
+    <h3><a href="https://huggingface.co/aghasalim/siba-meristem-1.0">siba-meristem-1.0</a></h3>
+    <p>Qwen2.5-3B fine-tuned with QLoRA on 167,785 instruction pairs in Azerbaijani, Russian, English and Turkish. Shipped as a 1.9 GB GGUF, so it runs locally with <code>ollama run aghasalim/siba-meristem-1.0</code>. On <a href="https://huggingface.co/aghasalim/siba-meristem-1.0">Hugging Face</a> and <a href="https://ollama.com/aghasalim/siba-meristem-1.0">Ollama</a>.</p>
+    <div class="stack"><span>qwen2.5</span><span>qlora</span><span>azerbaijani</span><span>gguf</span></div>
+    <div class="btns"><a class="pill" href="https://huggingface.co/aghasalim/siba-meristem-1.0"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools" data-repo="azbench" data-doi="10.5281/zenodo.23003616">
+  <a class="shot noimg" href="https://github.com/aghasalim/azbench" tabindex="-1" aria-hidden="true"><span>azbench</span></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/azbench">azbench</a></h3>
+    <p>An Azerbaijani LLM benchmark of 2,148 questions, published as a <a href="https://huggingface.co/datasets/aghasalim/azbench">Hugging Face dataset</a>. My SIBA Meristem 1.0.1 fine-tune scores 40.0% on exam questions against 36.9% for its base model, but loses 6.3 points on reading comprehension, and on TUMLU neither beats always answering D.</p>
+    <div class="stack"><span>azerbaijani</span><span>llm-benchmark</span><span>belebele</span><span>include</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/azbench"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003616">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools" data-repo="groundcheck-mcp" data-doi="10.5281/zenodo.23003639">
+  <a class="shot" href="https://github.com/aghasalim/groundcheck-mcp" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/groundcheck-mcp/main/docs/verdicts.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/groundcheck-mcp">groundcheck-mcp</a></h3>
+    <p>An MCP connector that checks whether a claim is actually grounded, a real quote, a real citation, real code output, with no second language model doing the judging. Works with Claude and Gemini.</p>
+    <div class="stack"><span>ai-safety</span><span>claude</span><span>fact-checking</span><span>gemini</span><span>hallucination-detection</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/groundcheck-mcp"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003639">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools" data-repo="eu-ai-act-rag" data-doi="10.5281/zenodo.23003624">
+  <a class="shot" href="https://github.com/aghasalim/eu-ai-act-rag" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/eu-ai-act-rag/main/eval/figures/answer-quality.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/eu-ai-act-rag">eu-ai-act-rag</a></h3>
+    <p>Retrieval over Regulation (EU) 2024/1689, graded by a model that is not the one answering. 90.9% hit rate at 6 and 90.2% faithful on 45 hand-written questions.</p>
+    <div class="stack"><span>eu-ai-act</span><span>hybrid-search</span><span>information-retrieval</span><span>llm-evaluation</span><span>nlp</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/eu-ai-act-rag"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003624">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
+<article class="card more" data-f="tools" data-repo="ieee-fraud-ml" data-doi="10.5281/zenodo.23003651">
+  <a class="shot" href="https://github.com/aghasalim/ieee-fraud-ml" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/ieee-fraud-ml/main/reports/figures/ablation.png" alt="" loading="lazy"></a>
+  <div class="body">
+    <h3><a href="https://github.com/aghasalim/ieee-fraud-ml">ieee-fraud-ml</a></h3>
+    <p>IEEE-CIS fraud detection validated in time order, since a shuffled split leaks future data. 0.1044 AUC is what that difference costs, and 0.9086 on the private leaderboard.</p>
+    <div class="stack"><span>feature-engineering</span><span>fraud-detection</span><span>gradient-boosting</span><span>kaggle</span><span>tabular-data</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/ieee-fraud-ml"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003651">DOI</a></div>
+    <div class="meta"></div>
+  </div>
+</article>
 </div>
 <p class="empty" id="empty" hidden aria-live="polite">Nothing matches.</p>
 
 <h2 id="papers">Publications</h2>
-<div class="card">
+<article class="pub">
   <h3><a href="https://doi.org/10.2139/ssrn.7497398">A Multilingual Groundedness Detector that Runs on a Raspberry Pi: Trained Token Classification against LLM Judges and English-only Detectors in 31 Languages</a></h3>
   <p>Aghasalim Mustafazada and Teymur Eyvazov. SSRN, 2026. An XLM-RoBERTa token classifier that marks unsupported spans in RAG answers, benchmarked in 31 languages against LLM judges and the English-only detectors. Code, data and the trained weights are in the <a href="https://github.com/aghasalim/groundedness">groundedness</a> repository.</p>
-  <div class="meta"><span class="k">SSRN preprint</span> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7497398">Read on SSRN</a> DOI 10.2139/ssrn.7497398</div>
-</div>
-<div class="card">
+  <div class="pmeta"><span class="k">SSRN preprint</span> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7497398">Read on SSRN</a> DOI 10.2139/ssrn.7497398</div>
+</article>
+<article class="pub">
   <h3><a href="https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/nothing-to-verify-why-a-verified-dsl-search-score">Nothing to Verify: Why a Verified DSL Search Scores Zero on ARC-AGI-2</a></h3>
   <p>Aghasalim Mustafazada. ARC Prize 2026 paper track, Kaggle, 2026. My program search solves 39 of 1,000 training tasks and 0 of 120 evaluation tasks, and the write-up measures why: on evaluation it never proposes a single candidate, so the verifier has nothing to check. When it does find a program, 3 of 42 fit every example and still fail the test. Code and every number are in the <a href="https://github.com/aghasalim/arc-prize-2026">arc-prize-2026</a> repository.</p>
-  <div class="meta"><span class="k">Competition write-up, submitted</span> <a href="https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/nothing-to-verify-why-a-verified-dsl-search-score">Read on Kaggle</a> DOI 10.5281/zenodo.23003614 (code)</div>
-</div>
+  <div class="pmeta"><span class="k">Competition write-up, submitted</span> <a href="https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/nothing-to-verify-why-a-verified-dsl-search-score">Read on Kaggle</a> DOI 10.5281/zenodo.23003614 (code)</div>
+</article>
 
-<h2 id="experience">Experience and education</h2>
-<div class="two">
-<div>
-<ul class="tl">
-  <li><h3>Head of IT, Adscreen</h3><span class="when">Kortrijk, June 2024 to now</span>
-    <p>Real-time ad targeting pipelines in Python and TensorFlow across a fleet of over 1,000 edge devices. Containerised deployments with Docker and Kubernetes, with monitoring and automated recovery for the computer vision analytics service.</p></li>
-  <li><h3>AI developer and student researcher, Howest</h3><span class="when">September 2024 to June 2025</span>
-    <p>Predictive models and transformer NLP pipelines for industry partner projects. Computer vision with CNNs, YOLO and OpenCV, C++ simulation modules, and cross-validation protocols so partner results were reproducible.</p></li>
-  <li><h3>Programming instructor, STEP IT Academy</h3><span class="when">Baku, April 2019 to December 2023</span>
-    <p>Taught programming and AI to over 200 students and supervised capstone projects from preprocessing to deployment. Built microcontroller prototypes with embedded ML models that became reference coursework.</p></li>
-  <li><h3>Founder and team lead, RED RUSH and ARENA FEST</h3><span class="when">Baku, 2024</span>
-    <p>Founded two events, then moved to a remote advisory role. Led over 30 volunteers at Red Bull F1 and Cars and Coffee events.</p></li>
-</ul>
-</div>
-<div>
-<ul class="tl">
-  <li><h3>Howest University of Applied Sciences</h3><span class="when">Bachelor, Creative Technologies and AI, expected 2027</span>
-    <p>Advanced deep learning, computer vision, reinforcement learning, MLOps and AI ethics.</p></li>
-  <li><h3>STEP IT Academy Azerbaijan</h3><span class="when">Diploma, programming and IT, 2017 to 2023</span></li>
-  <li><h3>International STEM Olympiad</h3><span class="when">Gold medal, mathematics, 2022</span></li>
-  <li><h3>Kaggle</h3><span class="when">IEEE-CIS Fraud Detection</span>
-    <p>Time-ordered folds with a 30-day embargo, so validation never sees the future. <a href="https://www.kaggle.com/aghasalimmustafazada">Profile</a>.</p></li>
-</ul>
-</div>
-</div>
-
-<h2 id="skills">Skills</h2>
-<p class="empty">Only things that appear in the repositories above or that I have shipped at work.</p>
-<div class="skills">
-  <span>Python</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>Bash</span>
-  <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>LightGBM</span><span>Transformers</span><span>PEFT, LoRA and QLoRA</span><span>Ollama and GGUF</span>
-  <span>Diffusion and flow models</span><span>RL, PPO, DPO, GRPO</span><span>Attention kernels</span><span>Computer vision, YOLO, OpenCV, CLIP</span>
-  <span>RAG and retrieval evaluation</span><span>Hallucination detection</span><span>Anomaly detection, PatchCore, PaDiM</span>
-  <span>FastAPI</span><span>Streamlit</span><span>MLflow</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span><span>PostgreSQL</span>
-  <span>Raspberry Pi</span><span>Arduino</span><span>Linux</span>
-</div>
 
 <h2 id="contact">Contact</h2>
-<p>Open to AI and backend internships, in Belgium or remote. Email <a href="mailto:salim.mustafazada@student.howest.be" id="mail">salim.mustafazada@student.howest.be</a>, or message me on <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>.</p>
+<p class="bio" style="margin:0"><span style="color:var(--mut)">Open to AI and backend internships, in Belgium or remote. Email <a href="mailto:salim.mustafazada@student.howest.be" id="mail">salim.mustafazada@student.howest.be</a>, or message me on <a href="https://linkedin.com/in/mustafazada">LinkedIn</a>.</span></p>
 
-<footer><p>All source on <a href="https://github.com/aghasalim">GitHub</a>. Built by hand, no framework.</p></footer>
+<footer><span>&copy; 2026 Aghasalim Mustafazada. Built by hand, no framework.</span><span><a href="https://github.com/aghasalim/aghasalim.github.io">Source</a></span></footer>
 </div>
 <div class="modal" id="cv-modal" hidden role="dialog" aria-modal="true" aria-label="Curriculum vitae">
   <div class="modal-head">
@@ -403,7 +505,7 @@ README drifts from the CSV.</p>
   if (t) root.setAttribute('data-theme', t);
   document.getElementById('theme').addEventListener('click', function () {
     var dark = root.getAttribute('data-theme') === 'dark' ||
-      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+      (!root.getAttribute('data-theme') && true);
     var next = dark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) {}
@@ -436,6 +538,11 @@ README drifts from the CSV.</p>
     ch.classList.add('on'); ch.setAttribute('aria-pressed', 'true');
     f = ch.dataset.f; apply(); }); });
   q.addEventListener('input', apply);
+  var see = document.getElementById('see-all'), cardsEl = document.getElementById('cards');
+  function showAll(){ cardsEl.classList.add('all'); see.textContent = 'Show fewer'; }
+  see.addEventListener('click', function(){ if (cardsEl.classList.contains('all')) { cardsEl.classList.remove('all'); see.textContent = 'See all'; } else showAll(); });
+  chips.forEach(function (ch) { ch.addEventListener('click', function(){ if (ch.dataset.f !== 'all') showAll(); }); });
+  q.addEventListener('input', function(){ if (q.value.trim()) showAll(); });
 
   // live repo metadata from GitHub, best effort, cached for an hour
   var KEY = 'gh-repos', data = null;
@@ -447,7 +554,7 @@ README drifts from the CSV.</p>
       if (r.language) parts.push('<span class="k">' + r.language + '</span>');
       if (r.stargazers_count) parts.push('&#9733; ' + r.stargazers_count);
       if (r.pushed_at) parts.push('updated ' + new Date(r.pushed_at).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}));
-      if (c.dataset.doi) parts.push('<a href="https://doi.org/' + c.dataset.doi + '">DOI</a>');
+      
       m.innerHTML = parts.join(' ');
     });
   }
