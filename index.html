@@ -55,7 +55,7 @@
 :root{--bg:#0a0a0a;--fg:#d6d6d6;--mut:#8b8b8b;--line:#232323;--card:#111;--chip:#1a1a1a;--acc:#fff;--pill:#161616;--h0:#1b1b1b;--h1:#2f3b4d;--h2:#3b5a8a;--h3:#4f7fc2;--h4:#7fb0ff;color-scheme:dark}
 :root[data-theme=light]{--bg:#fafafa;--fg:#1c1c1c;--mut:#6b6b6b;--line:#e4e4e4;--card:#fff;--chip:#f0f0f0;--acc:#000;--pill:#f3f3f3;--h0:#ebedf0;--h1:#c6dbf7;--h2:#8fb8ef;--h3:#4f8de0;--h4:#1f5fc4;color-scheme:light}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:700px;margin:0 auto;padding:56px 22px 60px}
@@ -89,9 +89,7 @@ h2 .see:hover{color:var(--fg)}
 .now li{display:flex;gap:12px;color:var(--mut);font-size:.92rem;line-height:1.6}
 .now b{color:var(--fg);font-weight:600}
 .now .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-top:8px}
-.now .dot.live{background:#3fb950;box-shadow:0 0 0 0 rgba(63,185,80,.6);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,185,80,.55)}70%{box-shadow:0 0 0 7px rgba(63,185,80,0)}100%{box-shadow:0 0 0 0 rgba(63,185,80,0)}}
-@media (prefers-reduced-motion:reduce){.now .dot.live{animation:none}}
+.now .dot.live{background:#3fb950}
 .tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line)}
 .tl li{position:relative;padding:0 0 22px 14px}
 .tl li:before{content:"";position:absolute;left:-22px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--mut)}
@@ -227,7 +225,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card" data-f="scratch" data-repo="rlhf-ppo-from-scratch" data-doi="10.5281/zenodo.23003676">
-  <a class="shot" href="https://github.com/aghasalim/rlhf-ppo-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rlhf-ppo-from-scratch/main/results/goodhart.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/rlhf-ppo-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rlhf-ppo-from-scratch/main/results/overoptimization.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/rlhf-ppo-from-scratch">rlhf-ppo-from-scratch</a></h3>
     <p>PPO, a Bradley-Terry reward model, plus DPO, GRPO, RLOO and Best-of-N. The proxy reward climbs to +9.97 while the true objective peaks and then collapses to -1.43, below the policy it started from.</p>
@@ -237,7 +235,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card" data-f="scratch" data-repo="rectified-flow-from-scratch" data-doi="10.5281/zenodo.23003668">
-  <a class="shot" href="https://github.com/aghasalim/rectified-flow-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/animation-8gaussians.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/rectified-flow-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rectified-flow-from-scratch/main/results/trajectories-8gaussians.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/rectified-flow-from-scratch">rectified-flow-from-scratch</a></h3>
     <p>Conditional flow matching and reflow. One round of reflow drops the straightness metric by 15000x and buys single-step sampling at 128x less compute for no measurable loss.</p>
@@ -257,7 +255,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card" data-f="scratch" data-repo="schrodinger-bridge-from-scratch" data-doi="10.5281/zenodo.23003678">
-  <a class="shot" href="https://github.com/aghasalim/schrodinger-bridge-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/schrodinger-bridge-from-scratch/main/results/animation-8gaussians.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/schrodinger-bridge-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/schrodinger-bridge-from-scratch/main/results/paths-8gaussians.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/schrodinger-bridge-from-scratch">schrodinger-bridge-from-scratch</a></h3>
     <p>Entropic optimal transport, diffusion Schrodinger bridges by IPF, and bridge matching. Bridge matching wins by 1.3x to 12x at a quarter the cost.</p>
@@ -267,7 +265,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card" data-f="scratch" data-repo="mla-from-scratch" data-doi="10.5281/zenodo.23003662">
-  <a class="shot" href="https://github.com/aghasalim/mla-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/mla-from-scratch/main/results/cache-growth.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/mla-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/mla-from-scratch/main/results/cache.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/mla-from-scratch">mla-from-scratch</a></h3>
     <p>Multi-head latent attention from DeepSeek-V2, with decoupled RoPE and absorbed inference verified equal to the naive form to 6e-07. A 14.2x KV cache reduction, 120 GB down to 8.4 GB at 128k context.</p>
@@ -277,7 +275,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card more" data-f="scratch" data-repo="world-model-from-scratch" data-doi="10.5281/zenodo.23003689">
-  <a class="shot" href="https://github.com/aghasalim/world-model-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/world-model-from-scratch/main/results/dream-vs-real.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/world-model-from-scratch" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/world-model-from-scratch/main/results/open-loop.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/world-model-from-scratch">world-model-from-scratch</a></h3>
     <p>An RSSM and an actor critic trained entirely in imagination, on a pendulum where velocity is hidden. At 57,600 steps no world model beats a random policy. Given the same 384,000 steps as the model-free baseline, all three beat it, the best seed reaching -20.51 against -35.08, at about 60 times the compute.</p>
@@ -357,7 +355,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
   </div>
 </article>
 <article class="card more" data-f="eval demo" data-repo="rl-arm-reward-shaping" data-doi="10.5281/zenodo.23003674">
-  <a class="shot" href="https://github.com/aghasalim/rl-arm-reward-shaping" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rl-arm-reward-shaping/main/reports/figures/final_early.gif" alt="" loading="lazy"></a>
+  <a class="shot" href="https://github.com/aghasalim/rl-arm-reward-shaping" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/rl-arm-reward-shaping/main/reports/figures/reward_shaping_comparison.png" alt="" loading="lazy"></a>
   <div class="body">
     <h3><a href="https://github.com/aghasalim/rl-arm-reward-shaping">rl-arm-reward-shaping</a></h3>
     <p>A 2-link arm, six reward functions, two exploited outright. The distance reward taught the agent to crash on purpose in 200 of 200 episodes. Final PPO agent 43.2% success against 73.5% for a PD controller, but 17.3% collisions against 25.5%. Rewards replayed in seven languages by CI.</p>
