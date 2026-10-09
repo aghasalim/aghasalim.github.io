@@ -129,7 +129,7 @@ h2 .see:hover{color:var(--fg)}
 .pub{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:16px 18px;margin:0 0 12px}
 .pub h3{margin:0 0 6px;font-size:1rem;font-weight:600}.pub h3 a{text-decoration:none}.pub h3 a:hover{text-decoration:underline}
 .pub p{margin:0 0 8px;color:var(--mut);font-size:.88rem}
-.pub .pmeta{font-size:.78rem;color:var(--mut)}.pub .pmeta .k{background:var(--chip);border-radius:4px;padding:0 6px;margin-right:6px}
+.pub .pmeta{font-size:.78rem;color:var(--mut)}.pub .pmeta .k{background:var(--chip);border-radius:4px;padding:0 6px;margin-right:6px}.pub .pmeta a{margin-right:10px}
 footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:640px){.card{grid-template-columns:1fr}.shot{border-right:0;border-bottom:1px solid var(--line);max-height:220px}.wrap{padding-top:36px}}
 /* CV modal */
@@ -179,10 +179,10 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
 </section>
 
 <h2 id="now">Right now</h2>
-<p class="updated">Last updated 9 October 2026.</p>
+<p class="updated">Last updated 10 October 2026.</p>
 <ul class="now">
   <li><span class="dot live"></span><div><b>ARC Prize 2026, ARC-AGI-2.</b> My own DSL program search scores 0.00 on the hidden set, and the <a href="https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/nothing-to-verify-why-a-verified-dsl-search-score">paper track write-up</a> explains why. On the leaderboard I run the public NVARC Qwen3 4B notebook as a baseline, best 31.39, and I measured that identical reruns of it land anywhere from 27 to 31. I also tried training it further on the 2,000 puzzles it gets most wrong. On a rented A100 the held-out loss on those puzzles fell from 0.249 to 0.178, but on 30 evaluation tasks the trained model solved 9.17, exactly what the base model solved. Lower loss on hard examples did not turn into more solved tasks, so I did not submit it.</div></li>
-  <li><span class="dot live"></span><div><b>Two papers in review prep.</b> An <a href="#papers">evaluation of my PatchCore</a> over five seeds and all 15 MVTec AD categories, within 0.003 of anomalib, and a study of what happens to legal search when the <a href="#papers">EU AI Act is amended</a> under it. Both are submitted to SSRN and in review.</div></li>
+  <li><span class="dot live"></span><div><b>Two papers in review at SSRN.</b> An <a href="#papers">evaluation of my PatchCore</a> over five seeds and all 15 MVTec AD categories, within 0.003 of anomalib, and a study of what happens to legal search when the <a href="#papers">EU AI Act is amended</a> under it. Both are written with Murad Eyvazov.</div></li>
   <li><span class="dot live"></span><div><b>Is my model getting worse?</b> <a href="https://github.com/aghasalim/model-nerf-watch">model-nerf-watch</a> scores a model on fixed probes every day with a confidence interval. The honest result so far is how little 60 probes can see: a 20 point drop, not a 5 point one.</div></li>
   <li><span class="dot"></span><div><b>Offline AI for accessibility.</b> <a href="https://github.com/aghasalim/offline-live-captions">Live captions</a> that never touch the network, and <a href="https://github.com/aghasalim/one-answer-vision">one short answer</a> from a camera for blind users. Next step for both is real recordings and real photos instead of simulated ones.</div></li>
   <li><span class="dot"></span><div><b>Azerbaijani language models.</b> A multilingual <a href="https://github.com/aghasalim/groundedness">hallucination detector</a> on a Raspberry Pi, a <a href="https://github.com/aghasalim/azbench">benchmark</a>, and the <a href="https://huggingface.co/aghasalim/siba-meristem-1.0">Meristem</a> fine-tune, which I still have to score properly against its base model.</div></li>
