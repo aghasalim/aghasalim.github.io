@@ -40,3 +40,19 @@ jobs:
           echo "rejected as it should be"
           cp /tmp/claims.tsv.bak verify/claims.tsv
           bash verify/verify.sh
+
+      - name: a published value that is not in its phrase is rejected
+        run: |
+          cp verify/claims.tsv /tmp/claims.tsv.bak
+          python3 -c "
+          s = open('verify/claims.tsv').read()
+          t = s.replace('copy\t5.3\t-\t5.3\t', 'copy\t5.4\t-\t5.4\t', 1)
+          assert t != s
+          open('verify/claims.tsv', 'w').write(t)
+          "
+          if node verify/claims.js; then
+            echo "claims.js accepted 5.4 for a phrase that says 5.3"
+            cp /tmp/claims.tsv.bak verify/claims.tsv
+            exit 1
+          fi
+          cp /tmp/claims.tsv.bak verify/claims.tsv
