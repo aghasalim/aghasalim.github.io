@@ -1,47 +1,40 @@
 id	repo	source	rule	a	b	published	phrase
-ld_speed	latent-diffusion-from-scratch	README.md line 13	copy	5.3	-	5.3	trains 5.3x faster than the pixel baseline
-ld_quality	latent-diffusion-from-scratch	README.md line 13	copy	6.2	-	6.2	scores 6.2x better at matched steps
-rlhf_proxy	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	9.966	-	9.97	climbs to +9.97
-rlhf_gold	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	-1.426	-	-1.43	collapses to -1.43
-rf_straight	rectified-flow-from-scratch	README.md line 70	copy	15000	-	15000	drops the straightness metric by 15000x
+ld_speed	latent-diffusion-from-scratch	README.md line 13	copy	5.3	-	5.3	trained 5.3x faster than in pixel space
+ld_quality	latent-diffusion-from-scratch	README.md line 13	copy	6.2	-	6.2	it scored 6.2x better
+rlhf_proxy	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	9.966	-	9.97	kept going up to +9.97
+rlhf_gold	rlhf-ppo-from-scratch	README.md KL table, row KL=0.0	round2	-1.426	-	-1.43	then fell to -1.43
+rf_straight	rectified-flow-from-scratch	README.md line 70	copy	15000	-	15000	made the paths about 15000x straighter
 rf_compute	rectified-flow-from-scratch	README.md line 43	copy	128	-	128	128x less compute
-fa_fusion	flash-attention-from-scratch	README.md line 60	ratio0	67	22	3	Kernel fusion is worth about 3x
+fa_fusion	flash-attention-from-scratch	README.md line 60	ratio0	67	22	3	Fusing the kernel is worth about 3x
 fa_before	flash-attention-from-scratch	README.md line 60	copy	22	-	22	from 22% of peak
 fa_after	flash-attention-from-scratch	README.md line 60	copy	67	-	67	to roughly 67%
-sb_low	schrodinger-bridge-from-scratch	README.md line 70, ODE column minimum	round1	1.29	-	1.3	wins by 1.3x to 12x
-sb_high	schrodinger-bridge-from-scratch	README.md line 70, SDE column maximum	round0	12.08	-	12	wins by 1.3x to 12x
-sb_cost	schrodinger-bridge-from-scratch	README.md wall clock table, DSB 33 s over bridge matching 8.0 s	ratio0	33	8.0	4	at a quarter the cost
-mla_ratio	mla-from-scratch	README.md KV cache table, MHA 120.00 GB over MLA 8.44 GB	ratio1	120.00	8.44	14.2	A 14.2x KV cache reduction
-mla_mha	mla-from-scratch	README.md KV cache table, MHA row	copy	120.00	-	120	120 GB down to 8.4 GB
-mla_mla	mla-from-scratch	README.md KV cache table, MLA row 8.44 GB	round1	8.44	-	8.4	120 GB down to 8.4 GB
-mla_absorb	mla-from-scratch	README.md line 154	copy	6e-07	-	6e-07	verified equal to the naive form to 6e-07
-eu_faith	eu-ai-act-rag	README.md line 78	copy	90.2	-	90.2	90.2% faithful
-ieee_gap	ieee-fraud-ml	README.md split table, shuffled global 0.9557 minus chronological fold-local embargo 0.8513	diff4	0.9557	0.8513	0.1044	0.1044 AUC is what that difference costs
-ieee_lb	ieee-fraud-ml	README.md leaderboard table, private leaderboard row	copy	0.9086	-	0.9086	0.9086 on the private leaderboard
+sb_low	schrodinger-bridge-from-scratch	README.md line 70, ODE column minimum	round1	1.29	-	1.3	bridge matching came out 1.3x to 12x better
+sb_high	schrodinger-bridge-from-scratch	README.md line 70, SDE column maximum	round0	12.08	-	12	bridge matching came out 1.3x to 12x better
+sb_cost	schrodinger-bridge-from-scratch	README.md wall clock table, DSB 33 s over bridge matching 8.0 s	ratio0	33	8.0	4	it cost about a quarter of the compute
+mla_ratio	mla-from-scratch	README.md KV cache table, MHA 120.00 GB over MLA 8.44 GB	ratio1	120.00	8.44	14.2	a 14.2x smaller KV cache
+mla_mha	mla-from-scratch	README.md KV cache table, MHA row	copy	120.00	-	120	8.4 GB instead of 120 GB
+mla_mla	mla-from-scratch	README.md KV cache table, MLA row 8.44 GB	round1	8.44	-	8.4	8.4 GB instead of 120 GB
+mla_absorb	mla-from-scratch	README.md line 154	copy	6e-07	-	6e-07	matches the naive one (to 6e-07)
+eu_faith	eu-ai-act-rag	README.md line 78	copy	90.2	-	90.2	90.2% of answers stick to the sources
+ieee_gap	ieee-fraud-ml	README.md split table, shuffled global 0.9557 minus chronological fold-local embargo 0.8513	diff4	0.9557	0.8513	0.1044	That peeking is worth 0.1044 AUC
+ieee_lb	ieee-fraud-ml	README.md leaderboard table, private leaderboard row	copy	0.9086	-	0.9086	My private leaderboard score was 0.9086
 lora_low	lora-forgetting	README.md section 3, sweep table, r=16 seed 1	copy	66.7	-	66.7	between 66.7% and 82.2%
-lora_high	lora-forgetting	README.md section 3, sweep table, r=16 seed 2	copy	82.2	-	82.2	to between 66.7% and 82.2% depending on the seed
-lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy	48.9	-	48.9	rises from 48.9% to
-lora_protocol	lora-forgetting	README.md section 2, 88.7 generated minus 72.0 ranked	diff4	88.7	72.0	16.7	disagree by 16.7 points
-lora_written	lora-forgetting	README.md section 3, written_amount worse than base in 11 of 15 tuned runs	copy	11	-	11	get worse in 11 of 15 runs
-lora_runs	lora-forgetting	README.md section 3, 5 runs on the 3090 plus 10 on the A5000	copy	15	-	15	rerun 15 times on rented GPUs
-enas_full	enas-microcontroller	README.md section 6, full training table, GPU winner mean 0.7643	ratio1	0.7643	0.01	76.4	the winner reaches 76.4%
-enas_base	enas-microcontroller	README.md section 6, full training table, baseline mean 0.7183	ratio1	0.7183	0.01	71.8	against 71.8% for the hand-written baseline
-enas_seeds	enas-microcontroller	README.md section 6, GPU winner ahead on every full training seed	copy	3	-	3	on 3 of 3 seeds
-enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random draws found nothing better
-enas_c	enas-microcontroller	README.md section 7, worst difference 3.219e-06, in units of 1e-06	round1	3.219	-	3.2	matches PyTorch to 3.2e-06
-wm_short	world-model-from-scratch	README.md, What did not work, all world models run for 57,600 steps	copy	57600	-	57600	At 57,600 steps
+lora_high	lora-forgetting	README.md section 3, sweep table, r=16 seed 2	copy	82.2	-	82.2	between 66.7% and 82.2% depending on the seed
+lora_base	lora-forgetting	README.md section 3, sweep table, base on the GPU	copy	48.9	-	48.9	Exact match went from 48.9% to
+lora_runs	lora-forgetting	README.md section 3, 5 runs on the 3090 plus 10 on the A5000	copy	15	-	15	run 15 times on rented GPUs
+enas_full	enas-microcontroller	README.md section 6, full training table, GPU winner mean 0.7643	ratio1	0.7643	0.01	76.4	The evolved model reached 76.4%
+enas_base	enas-microcontroller	README.md section 6, full training table, baseline mean 0.7183	ratio1	0.7183	0.01	71.8	against 71.8% for my hand-written baseline
+enas_seeds	enas-microcontroller	README.md section 6, GPU winner ahead on every full training seed	copy	3	-	3	on all 3 seeds
+enas_random	enas-microcontroller	README.md section 6, the seed genome plus 33 uniform draws	copy	33	-	33	33 random designs found nothing better
+wm_short	world-model-from-scratch	README.md, What did not work, all world models run for 57,600 steps	copy	57600	-	57600	With a small budget (57,600 steps)
 wm_long	world-model-from-scratch	README.md, Given the same 384,000 steps	copy	384000	-	384000	same 384,000 steps as the model-free baseline
-wm_best	world-model-from-scratch	README.md, 384k table, no-recon seed 1 final return -20.51	copy	-20.51	-	-20.51	the best seed reaching -20.51
-wm_mf	world-model-from-scratch	README.md, 384k table, model-free median -35.08	copy	-35.08	-	-35.08	against -35.08, at about
 wm_cost	world-model-from-scratch	README.md, about 420 s per world model run against about 7 s model-free	ratio0	420	7	60	about 60 times the compute
-az_items	azbench	README.md and the Hugging Face card, 900 + 548 + 700 questions	copy	2148	-	2148	benchmark of 2,148 questions
-az_meristem	azbench	results/ollama/summary.json, SIBA Meristem include-az 219 of 548	copy	40.0	-	40.0	scores 40.0% on exam questions
-az_base	azbench	results/ollama/summary.json, Qwen2.5-3B include-az 202 of 548	copy	36.9	-	36.9	against 36.9% for its base model
-az_reading	azbench	results/ollama/summary.json, belebele-az 45.2 for the base minus 38.9 for Meristem	diff4	45.2	38.9	6.3	loses 6.3 points on reading comprehension
-gl_tasks	gemma4-code-graph-localization	tasks.jsonl, 129 rows	copy	129	-	129	129 training tasks
-gl_embed	gemma4-code-graph-localization	results.jsonl, embed_file@5 sums to 37 over 128 tasks	copy	37	-	37	top five for 37 of 128 tasks
-gl_grep	gemma4-code-graph-localization	results.jsonl, grep_file@5 sums to 52 over 128 tasks	copy	52	-	52	plain grep for 52
-gl_bm25	gemma4-code-graph-localization	results.jsonl, bm25_src_file@5 sums to 82 over 128 tasks	copy	82	-	82	filtered out for 82
-arc_train	arc-prize-2026	arc-prize-2026 README.md results table, 39 of 1,000 training	copy	39	-	39	solves 39 of 1,000 training tasks
-arc_eval	arc-prize-2026	arc-prize-2026 README.md results table, 0 of 120 evaluation	copy	0	-	0	and 0 of 120 evaluation tasks
-arc_wrong	arc-prize-2026	arc-prize-2026 notes/METHODS.md section 3, 3 wrong of 42 believed	copy	3	-	3	3 of 42 fit every example
+az_items	azbench	README.md and the Hugging Face card, 900 + 548 + 700 questions	copy	2148	-	2148	A benchmark of 2,148 Azerbaijani questions
+az_meristem	azbench	results/ollama/summary.json, SIBA Meristem include-az 219 of 548	copy	40.0	-	40.0	(40.0% against 36.9%)
+az_base	azbench	results/ollama/summary.json, Qwen2.5-3B include-az 202 of 548	copy	36.9	-	36.9	(40.0% against 36.9%)
+gl_embed	gemma4-code-graph-localization	results.jsonl, embed_file@5 sums to 37 over 128 tasks	copy	37	-	37	the built-in embedding search for only 37
+gl_grep	gemma4-code-graph-localization	results.jsonl, grep_file@5 sums to 52 over 128 tasks	copy	52	-	52	top five for 52 tasks
+gl_bm25	gemma4-code-graph-localization	results.jsonl, bm25_src_file@5 sums to 82 over 128 tasks	copy	82	-	82	BM25 without test files for 82
+arc_train	arc-prize-2026	arc-prize-2026 README.md results table, 39 of 1,000 training	copy	39	-	39	solved 39 of 1,000 training puzzles
+arc_eval	arc-prize-2026	arc-prize-2026 README.md results table, 0 of 120 evaluation	copy	0	-	0	none of the 120 evaluation ones
+arc_wrong	arc-prize-2026	arc-prize-2026 notes/METHODS.md section 3, 3 wrong of 42 believed	copy	3	-	3	3 fit every example
