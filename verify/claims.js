@@ -1,8 +1,9 @@
 // Independent recomputation of the numbers on the front page, in Node.
 //
 // Two things happen here. Every phrase in verify/claims.tsv must appear in the
-// rendered text of index.html exactly once, and every published value must be
-// reproducible from the source values by the stated rule. The page is the only
+// rendered text of index.html exactly once and contain its published value,
+// and every published value must be reproducible from the source values by the
+// stated rule. The page is the only
 // place these numbers are written out in prose, so nothing else would notice if
 // a hand edit changed one.
 //
@@ -53,6 +54,18 @@ const recompute = (rule, a, b) => {
   return round(a - b, n);
 };
 
+// The published number must be written inside its own phrase, so the phrase
+// check pins the number and not just the words around it. These two say the
+// number in words ("about a quarter", "none of"), so they are listed here.
+const WORDED = new Set(["sb_cost", "arc_eval"]);
+const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const inPhrase = (raw, phrase) => {
+  const forms = [raw];
+  const m = /^(-?)(\d+)(\.\d+)?$/.exec(raw);
+  if (m) { forms.push(m[1] + m[2].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (m[3] || "")); }
+  return forms.some((f) => new RegExp("(?<![\\d.,])" + esc(f) + "(?![\\d]|[.,]\\d)").test(phrase));
+};
+
 let phrases = 0, values = 0;
 let worst = 0, worstId = "";
 for (const r of rows) {
@@ -63,6 +76,11 @@ for (const r of rows) {
     fail(id + ": phrase appears " + occurrences + " times in index.html, want 1: " + phrase);
   } else {
     phrases++;
+  }
+  if (WORDED.has(id)) {
+    if (inPhrase(r[col.published], phrase)) { fail(id + ": listed as worded but the phrase has the number"); }
+  } else if (!inPhrase(r[col.published], phrase)) {
+    fail(id + ": published value " + r[col.published] + " is not in its phrase: " + phrase);
   }
 
   const a = Number(r[col.a]);
