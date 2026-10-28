@@ -145,6 +145,8 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
 #medal-open:hover{filter:brightness(1.08);transform:translateY(-1px)}
 @keyframes medal-glow{0%,100%{box-shadow:0 0 0 0 rgba(185,119,62,.55)}50%{box-shadow:0 0 0 7px rgba(185,119,62,0)}}
 @media(prefers-reduced-motion:reduce){#medal-open{animation:none}}
+.feat{border-color:#b9773e;box-shadow:0 0 0 1px rgba(185,119,62,.35)}
+.feat .tag{display:inline-block;margin-bottom:8px;padding:2px 9px;border-radius:999px;background:linear-gradient(135deg,#f0c48a,#b9773e);color:#2a1805;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .medal-body{flex:1;max-width:1000px;width:100%;margin:0 auto;overflow:auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:18px;padding:8px 0 20px}
 .medal{width:140px;height:140px;perspective:600px;flex:none}
 .medal svg{width:100%;height:100%;animation:medal-in 1.1s cubic-bezier(.2,.8,.2,1) both,medal-float 4s ease-in-out 1.1s infinite}
@@ -229,6 +231,16 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:v
 </ul>
 
 <h2 id="work">Curious? Check out my projects. <button class="see" type="button" id="see-all">See all</button></h2>
+<article class="card feat" id="ivc" style="margin-bottom:18px">
+  <a class="shot" href="https://github.com/aghasalim/smart-ivc-cage-platform" tabindex="-1" aria-hidden="true"><img src="https://raw.githubusercontent.com/aghasalim/smart-ivc-cage-platform/main/docs/images/banner.jpg" alt="" loading="lazy"></a>
+  <div class="body">
+    <span class="tag">Featured, AI in a real device</span>
+    <h3><a href="https://github.com/aghasalim/smart-ivc-cage-platform">smart-ivc-cage-platform</a></h3>
+    <p>The software for a smart lab animal cage, built with a team for a real client at Howest. A Raspberry Pi 5 next to the cage handles feeding, water dosing, weighing, gas sensors and cameras, and a classifier turns the data into behaviour. I did 173 of the 204 commits, mostly the backend, the dashboard, the firmware layer and the deployment. The classifier scored 0.996 macro-F1, but on data from our own generator, so I say plainly that it proves nothing about real mice. The part I trust is the camera pipeline, which I ran on 47 hours of real infrared footage.</p>
+    <div class="stack"><span>fastapi</span><span>react</span><span>raspberry-pi</span><span>arduino</span><span>iot</span></div>
+    <div class="btns"><a class="pill" href="https://github.com/aghasalim/smart-ivc-cage-platform">View on GitHub</a><a class="pill" href="https://doi.org/10.5281/zenodo.23003680">DOI</a></div>
+  </div>
+</article>
 <div class="filters">
   <input type="search" id="q" placeholder="Filter projects, e.g. diffusion, RL, hallucination" aria-label="Filter projects">
   <button class="chip on" type="button" data-f="all" aria-pressed="true">All</button>
