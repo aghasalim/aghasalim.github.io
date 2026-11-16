@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aghasalim.github.io/sitemap.xml
+Sitemap: https://aghasalim.com/sitemap.xml
