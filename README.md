@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a browser window showing a portfolio page with cards and small charts" width="100%"></p>
+
 # aghasalim.github.io
 
 My personal site. One hand written page, no build step, no framework, served by
